@@ -1,0 +1,13 @@
+{
+  "name": "beckwealth-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beck Wealth WordPress theme – build tooling (minification only).",
+  "scripts": {
+    "build": "node bin/build.js",
+    "watch": "node bin/build.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
