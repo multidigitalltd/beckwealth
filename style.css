@@ -1,0 +1,22 @@
+/*
+Theme Name:   Beck Wealth
+Theme URI:    https://github.com/multidigitalltd/beckwealth
+Author:       Multi Digital Ltd
+Author URI:   https://multidigital.co.il
+Description:  תבנית וורדפרס ייעודית לאתר Beck Wealth – ניהול הון וייעוץ פיננסי. תבנית RTL מלאה, מהירה, מאובטחת ונגישה, שפותחה על-ידי מולטי דיגיטל.
+Version:      1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+License:      GNU General Public License v2 or later
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  beckwealth
+Domain Path:  /languages
+Tags:         rtl-language-support, custom-menu, custom-logo, featured-images, block-styles, wide-blocks, editor-style, translation-ready, accessibility-ready, one-column, right-sidebar
+
+Beck Wealth WordPress Theme, (C) 2026 Multi Digital Ltd.
+Beck Wealth is distributed under the terms of the GNU GPL v2 or later.
+
+הקובץ הזה מכיל רק את כותרת התבנית. עיצוב האתר נמצא בקובץ assets/css/main.css
+ונטען דרך inc/enqueue.php. אין להוסיף כאן CSS.
+*/

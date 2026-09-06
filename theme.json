@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": { "contentSize": "860px", "wideSize": "1240px" },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "cream", "color": "#faf6ee", "name": "קרם (רקע)" },
+        { "slug": "alt", "color": "#f3ece0", "name": "קרם כהה" },
+        { "slug": "ink", "color": "#2b2620", "name": "דיו (טקסט)" },
+        { "slug": "ink-dark", "color": "#221d18", "name": "דיו כהה" },
+        { "slug": "dark", "color": "#241f19", "name": "רקע כהה" },
+        { "slug": "gold", "color": "#c2a25c", "name": "זהב" },
+        { "slug": "gold-deep", "color": "#96793a", "name": "זהב כהה" },
+        { "slug": "body", "color": "#5c5347", "name": "טקסט גוף" },
+        { "slug": "muted", "color": "#877d6f", "name": "טקסט משני" },
+        { "slug": "paper", "color": "#f3ecdd", "name": "נייר (על כהה)" },
+        { "slug": "line", "color": "#e0d6bf", "name": "קו דק" }
+      ]
+    },
+    "typography": {
+      "fluid": false,
+      "fontFamilies": [
+        { "slug": "almoni", "name": "Almoni", "fontFamily": "\"Almoni\", \"Segoe UI\", Arial, sans-serif" },
+        { "slug": "index", "name": "Index", "fontFamily": "\"Index\", \"Almoni\", Georgia, serif" }
+      ],
+      "fontSizes": [
+        { "slug": "small", "size": "14px", "name": "קטן" },
+        { "slug": "medium", "size": "17.5px", "name": "רגיל" },
+        { "slug": "large", "size": "22px", "name": "גדול" },
+        { "slug": "x-large", "size": "30px", "name": "גדול מאוד" },
+        { "slug": "xx-large", "size": "42px", "name": "ענק" }
+      ]
+    },
+    "spacing": {
+      "units": [ "px", "rem", "em", "%", "vw" ],
+      "spacingSizes": [
+        { "slug": "20", "size": "8px", "name": "1" },
+        { "slug": "30", "size": "16px", "name": "2" },
+        { "slug": "40", "size": "28px", "name": "3" },
+        { "slug": "50", "size": "48px", "name": "4" },
+        { "slug": "60", "size": "72px", "name": "5" },
+        { "slug": "70", "size": "110px", "name": "6" }
+      ]
+    },
+    "border": { "radius": false }
+  },
+  "styles": {
+    "color": { "background": "var(--wp--preset--color--cream)", "text": "var(--wp--preset--color--ink)" },
+    "typography": { "fontFamily": "var(--wp--preset--font-family--almoni)", "fontSize": "var(--wp--preset--font-size--medium)", "lineHeight": "1.75" },
+    "elements": {
+      "heading": { "typography": { "fontFamily": "var(--wp--preset--font-family--index)", "fontWeight": "500", "lineHeight": "1.3" }, "color": { "text": "var(--wp--preset--color--ink-dark)" } },
+      "link": { "color": { "text": "var(--wp--preset--color--gold-deep)" } },
+      "button": {
+        "color": { "background": "var(--wp--preset--color--ink-dark)", "text": "var(--wp--preset--color--cream)" },
+        "border": { "radius": "0" },
+        "typography": { "fontWeight": "500", "letterSpacing": "0.04em" },
+        ":hover": { "color": { "background": "var(--wp--preset--color--gold)", "text": "var(--wp--preset--color--ink-dark)" } }
+      }
+    }
+  }
+}
