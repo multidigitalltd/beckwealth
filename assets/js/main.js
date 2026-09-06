@@ -115,8 +115,25 @@
 	/* ---------- נגישות: החלת העדפות שמורות + טעינה עצלה של הסרגל ---------- */
 	const A11Y_KEY = 'bw_a11y';
 	const a11yClasses = [ 'contrast', 'invert', 'grayscale', 'underline', 'readable', 'no-motion', 'headings', 'links', 'keyboard' ];
+	const guide = document.getElementById( 'a11y-guide' );
+	let guideBound = false;
+	const applyGuide = ( on ) => {
+		if ( ! guide ) {
+			return;
+		}
+		guide.hidden = ! on;
+		if ( on && ! guideBound ) {
+			guideBound = true;
+			document.addEventListener( 'mousemove', ( e ) => {
+				if ( ! guide.hidden ) {
+					guide.style.top = e.clientY + 'px';
+				}
+			}, { passive: true } );
+		}
+	};
 	const applyPrefs = ( prefs ) => {
 		a11yClasses.forEach( ( c ) => html.classList.toggle( 'a11y-' + c, !! prefs[ c ] ) );
+		applyGuide( !! prefs.guide );
 		[ 'a11y-font-1', 'a11y-font-2', 'a11y-font-3', 'a11y-font--1' ].forEach( ( c ) => html.classList.remove( c ) );
 		const size = parseInt( prefs.font, 10 ) || 0;
 		if ( size !== 0 ) {

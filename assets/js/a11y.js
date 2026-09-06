@@ -17,7 +17,6 @@
 	const html = document.documentElement;
 	const closeBtn = panel.querySelector( '.a11y-panel__close' );
 	const buttons = panel.querySelectorAll( '[data-a11y]' );
-	const guide = document.getElementById( 'a11y-guide' );
 	let lastFocus = null;
 
 	const focusable = () => Array.from( panel.querySelectorAll( 'button, a[href], [tabindex]:not([tabindex="-1"])' ) ).filter( ( el ) => ! el.hidden );
@@ -35,9 +34,6 @@
 		if ( size ) {
 			const level = parseInt( prefs.font, 10 ) || 0;
 			size.textContent = ( level > 0 ? '+' : '' ) + level;
-		}
-		if ( guide ) {
-			guide.hidden = ! prefs.guide;
 		}
 	};
 
@@ -133,15 +129,6 @@
 			render();
 		} );
 	} );
-
-	// סרגל קריאה עוקב אחרי העכבר.
-	if ( guide ) {
-		document.addEventListener( 'mousemove', ( e ) => {
-			if ( ! guide.hidden ) {
-				guide.style.top = e.clientY + 'px';
-			}
-		}, { passive: true } );
-	}
 
 	window.beckwealthA11yPanel = { open, close };
 	render();

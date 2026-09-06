@@ -312,6 +312,11 @@ function beckwealth_handle_contact(): void {
 	 */
 	do_action( 'beckwealth_contact_lead', $lead, $lead_id );
 
+	if ( $newsletter && '' !== $email ) {
+		/** This action is documented in inc/contact-form.php (beckwealth_handle_newsletter). */
+		do_action( 'beckwealth_newsletter_signup', $email );
+	}
+
 	$sent = beckwealth_send_lead_email( $lead );
 	if ( ! $sent && $lead_id ) {
 		// הליד נשמר במערכת; כשל במייל נרשם ללוג השרת בלבד ואינו נחשף לגולש.

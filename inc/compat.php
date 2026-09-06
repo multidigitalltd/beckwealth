@@ -46,7 +46,7 @@ add_action( 'init', 'beckwealth_litespeed_nonces' );
  */
 function beckwealth_nocache_on_form_status(): void {
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only flag.
-	if ( isset( $_GET['contact'] ) ) {
+	if ( isset( $_GET['contact'] ) || isset( $_GET['newsletter'] ) ) {
 		nocache_headers();
 		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 			define( 'DONOTCACHEPAGE', true );
