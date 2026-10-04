@@ -1,6 +1,8 @@
 <?php
 /**
  * עמוד מחלקה (שירות) בודד.
+ * שלוש המחלקות המעוצבות (assets / tax / trust) מוצגות בתבניות העיצוב הייעודיות;
+ * שירות נוסף שייווצר מקבל את הפריסה הכללית.
  *
  * @package BeckWealth
  */
@@ -11,6 +13,11 @@ get_header();
 
 while ( have_posts() ) :
 	the_post();
+	$beckwealth_design = beckwealth_service_design();
+	if ( $beckwealth_design ) {
+		get_template_part( 'template-parts/service/' . $beckwealth_design );
+		continue;
+	}
 	$beckwealth_tagline = (string) get_post_meta( get_the_ID(), '_bw_tagline', true );
 	?>
 	<div class="page-header">

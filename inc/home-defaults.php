@@ -35,14 +35,14 @@ function beckwealth_home_fields(): array {
 		'ticker_label'      => array( __( 'שורת "מהשוק" – תווית', 'beckwealth' ), 'text', __( 'מהשוק', 'beckwealth' ), 'header' ),
 
 		/* ---------- הירו ---------- */
-		'hero_kicker'       => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'פמילי אופיס שוויצרי · שלושה דורות · מאז 1968', 'beckwealth' ), 'hero' ),
+		'hero_kicker'       => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'פמילי אופיס שוויצרי. שלושה דורות. מאז 1968', 'beckwealth' ), 'hero' ),
 		'hero_title'        => array( __( 'כותרת (טקסט בין ** יוצג בזהב)', 'beckwealth' ), 'text', __( 'ניהול הון **ותכנון מעבר בין-דורי**', 'beckwealth' ), 'hero' ),
 		'hero_subtitle'     => array( __( 'כותרת משנה', 'beckwealth' ), 'text', __( 'יציבות שוויצרית בנוכחות מלאה בישראל', 'beckwealth' ), 'hero' ),
 		'hero_text'         => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'תכנון אסטרטגיית השקעה למשקיעים כשירים ולמשפחות, עם כל המכשירים הפיננסיים שיש לבנקאות השוויצרית להציע. והכל, בנוכחות פיזית בישראל.', 'beckwealth' ), 'hero' ),
 		'hero_btn_label'    => array( __( 'כפתור ראשי – טקסט', 'beckwealth' ), 'text', __( 'תיאום שיחת היכרות', 'beckwealth' ), 'hero' ),
 		'hero_btn_url'      => array( __( 'כפתור ראשי – קישור', 'beckwealth' ), 'url', '#contact', 'hero' ),
 		'hero_link_label'   => array( __( 'קישור משני – טקסט', 'beckwealth' ), 'text', __( 'מה זה היתרון השוויצרי', 'beckwealth' ), 'hero' ),
-		'hero_link_url'     => array( __( 'קישור משני – קישור', 'beckwealth' ), 'url', '#advantage', 'hero' ),
+		'hero_link_url'     => array( __( 'קישור משני – קישור (ריק = עמוד היתרון השוויצרי)', 'beckwealth' ), 'url', '', 'hero' ),
 		'hero_image_a'      => array( __( 'תמונה 1 (תל אביב, 3:4)', 'beckwealth' ), 'image', 0, 'hero' ),
 		'hero_image_b'      => array( __( 'תמונה 2 (ציריך, 3:4)', 'beckwealth' ), 'image', 0, 'hero' ),
 		'hero_cap_a_en'     => array( __( 'כיתוב 1 – לועזי', 'beckwealth' ), 'text', 'ZÜRICH · BAHNHOFSTRASSE', 'hero' ),
@@ -76,9 +76,9 @@ function beckwealth_home_fields(): array {
 		'adv_ch_points'     => array( __( 'עמודה שוויץ – נקודות (שורה לכל נקודה: מודגש|טקסט)', 'beckwealth' ), 'textarea', "יציבות ורגולציה.|מערכת בנקאית עם מעל מאה שנות רציפות, תחת פיקוח FINMA.\nגישה לשווקים ולמכשירים.|נגישות לפלטפורמות השקעה גלובליות ומגוונות, שאינן זמינות בישראל.\nפיזור מטבעות ומדינות.|שכבת ביטחון להון שאינה תלויה במערכת אחת.", 'advantage' ),
 		'adv_il_title'      => array( __( 'עמודה ישראל – כותרת', 'beckwealth' ), 'text', __( 'נוכחות מלאה בישראל', 'beckwealth' ), 'advantage' ),
 		'adv_il_tag'        => array( __( 'עמודה ישראל – תווית לועזית', 'beckwealth' ), 'text', 'TEL AVIV', 'advantage' ),
-		'adv_il_points'     => array( __( 'עמודה ישראל – נקודות (מודגש|טקסט)', 'beckwealth' ), 'textarea', "משרד ישראלי.|עם אנשי מקצוע דוברי עברית.\nמיסוי ורגולציה.|עמידה בדרישות הרגולציה בישראל, ועבודה עם מומחי מיסוי בדין הישראלי.\nפגישות אישיות.|פנים אל פנים, בתל אביב או בציריך.", 'advantage' ),
+		'adv_il_points'     => array( __( 'עמודה ישראל – נקודות (מודגש|טקסט)', 'beckwealth' ), 'textarea', "נוכחות מלאה בישראל.|משרד ישראלי עם אנשי מקצוע דוברי עברית.\nמיסוי ורגולציה.|עמידה בדרישות הרגולציה בישראל, ועבודה עם מומחי מיסוי בדין הישראלי.\nפגישות אישיות.|פנים אל פנים, בתל אביב או בציריך.", 'advantage' ),
 		'adv_link1_label'   => array( __( 'קישור 1 – טקסט', 'beckwealth' ), 'text', __( 'לעמוד היתרון השוויצרי המלא', 'beckwealth' ), 'advantage' ),
-		'adv_link1_url'     => array( __( 'קישור 1 – כתובת', 'beckwealth' ), 'url', '#advantage', 'advantage' ),
+		'adv_link1_url'     => array( __( 'קישור 1 – כתובת (ריק = עמוד היתרון השוויצרי)', 'beckwealth' ), 'url', '', 'advantage' ),
 		'adv_link2_label'   => array( __( 'קישור 2 – טקסט', 'beckwealth' ), 'text', __( 'ליצירת קשר', 'beckwealth' ), 'advantage' ),
 		'adv_link2_url'     => array( __( 'קישור 2 – כתובת', 'beckwealth' ), 'url', '#contact', 'advantage' ),
 
@@ -161,7 +161,7 @@ function beckwealth_home_fields(): array {
 		'footer_il_title'   => array( __( 'עמודה 1 – כותרת', 'beckwealth' ), 'text', __( 'משרד ישראל', 'beckwealth' ), 'footer' ),
 		'footer_il_text'    => array( __( 'עמודה 1 – טקסט (שורות)', 'beckwealth' ), 'textarea', "מגדל אלון 2, תל אביב\n03-000-0000\nisrael@beckwealth.ch", 'footer' ),
 		'footer_ch_title'   => array( __( 'עמודה 2 – כותרת', 'beckwealth' ), 'text', __( 'משרד ציריך', 'beckwealth' ), 'footer' ),
-		'footer_ch_text'    => array( __( 'עמודה 2 – טקסט (שורות)', 'beckwealth' ), 'textarea', "Bahnhofstrasse 00, Zürich\n+41 00 000 00 00", 'footer' ),
+		'footer_ch_text'    => array( __( 'עמודה 2 – טקסט (שורות)', 'beckwealth' ), 'textarea', "Birmensdorferstrasse 123, Zürich\n+41 00 000 00 00", 'footer' ),
 		'footer_nav_title'  => array( __( 'עמודה 3 – כותרת (תפריט פוטר)', 'beckwealth' ), 'text', __( 'ניווט', 'beckwealth' ), 'footer' ),
 		'footer_legal_title' => array( __( 'עמודה 4 – כותרת (תפריט משפטי)', 'beckwealth' ), 'text', __( 'משפטי', 'beckwealth' ), 'footer' ),
 		'footer_disclaimer' => array( __( 'הבהרה משפטית', 'beckwealth' ), 'textarea', __( 'בק וולת׳ (ישראל) בע״מ פועלת בשיתוף BeckWealth AG, ציריך, המפוקחת על ידי הרגולטור השוויצרי (FINMA). הנכסים מוחזקים בחשבונות על שם הלקוח בבנקים שוויצריים. אין באמור באתר זה משום ייעוץ השקעות, ייעוץ מס או שיווק השקעות כהגדרתם בחוק, ואין בו תחליף לייעוץ אישי המותאם לצרכיו של כל אדם. נוסח סופי באישור עו״ד.', 'beckwealth' ), 'footer' ),
@@ -198,13 +198,16 @@ function beckwealth_home_sections(): array {
 }
 
 /**
- * קריאת ערך תוכן (theme_mod) עם ברירת המחדל מהעיצוב.
+ * קריאת ערך תוכן (theme_mod) עם ברירת המחדל מהעיצוב (דף הבית או העמודים הפנימיים).
  *
  * @param string $key מפתח (ללא קידומת).
  * @return mixed
  */
 function beckwealth_mod( string $key ) {
-	$fields  = beckwealth_home_fields();
+	$fields = beckwealth_home_fields();
+	if ( ! isset( $fields[ $key ] ) && function_exists( 'beckwealth_page_fields' ) ) {
+		$fields = beckwealth_page_fields();
+	}
 	$default = $fields[ $key ][2] ?? '';
 	return get_theme_mod( 'bw_' . $key, $default );
 }

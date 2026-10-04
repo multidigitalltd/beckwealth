@@ -53,7 +53,7 @@ $bw_img_b = beckwealth_mod( 'hero_image_b' ) ?: BECKWEALTH_URI . '/assets/img/he
 				<div class="hero__actions">
 					<?php beckwealth_cta( (string) beckwealth_mod( 'hero_btn_label' ), (string) beckwealth_mod( 'hero_btn_url' ) ?: beckwealth_contact_url(), 'lg' ); ?>
 					<?php if ( beckwealth_mod( 'hero_link_label' ) ) : ?>
-						<a class="bw-link" href="<?php echo esc_url( (string) beckwealth_mod( 'hero_link_url' ) ); ?>"><?php echo esc_html( beckwealth_mod( 'hero_link_label' ) ); ?></a>
+						<a class="bw-link" href="<?php echo esc_url( (string) beckwealth_mod( 'hero_link_url' ) ?: beckwealth_swiss_url() ); ?>"><?php echo esc_html( beckwealth_mod( 'hero_link_label' ) ); ?></a>
 					<?php endif; ?>
 				</div>
 			</div>

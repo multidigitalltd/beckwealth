@@ -15,7 +15,9 @@ beckwealth/
 ├── inc/
 │   ├── settings.php          אופציה אחת (beckwealth_settings) + beckwealth_get_setting()
 │   ├── home-defaults.php     כל שדות התוכן של דף הבית + ברירות המחדל מהעיצוב (מקור יחיד)
-│   ├── customizer.php        קסטומייזר (נבנה אוטומטית מ-home-defaults)
+│   ├── pages-defaults.php    שדות התוכן של העמודים הפנימיים (מי אנחנו, היתרון השוויצרי, מחלקות, יצירת קשר)
+│   ├── pages.php             עזרי העמודים הפנימיים: זיהוי תבניות, מקטעים משותפים (שאלות, שוויץ/ישראל, טופס מקוצר…)
+│   ├── customizer.php        קסטומייזר (נבנה אוטומטית מ-home-defaults ו-pages-defaults)
 │   ├── post-types.php        שירותים (מחלקות), צוות, המלצות, שאלות ותשובות + שדות מטא
 │   ├── enqueue.php           טעינת CSS/JS מותנית, preload לגופנים, גרסאות .min בייצור
 │   ├── contact-form.php      טופס יצירת קשר + ניוזלטר (nonce, honeypot, rate-limit, Turnstile)
@@ -32,11 +34,12 @@ beckwealth/
 │   └── template-tags.php     פונקציות עזר (כפתורים, יהלום, משבצות תמונה, אייקונים, פירורי לחם)
 ├── template-parts/home/      14 מקטעי דף הבית (hero, trust, swiss, advantage, departments, offices,
 │                             quote, legacy, process, team, testimonials, blog, faq, contact) + ticker
+├── template-parts/service/   עמודי המחלקות המעוצבים: family-wealth, investments-tax, trust (לפי slug)
 ├── template-parts/content/   כרטיסים לעמודי ארכיון
-├── page-templates/           יצירת קשר, רוחב מלא
+├── page-templates/           מי אנחנו, היתרון השוויצרי, יצירת קשר, רוחב מלא
 ├── patterns/                 תבניות בלוקים לעורך
-├── assets/css                main (גלובלי) · home (דף הבית) · content (עמודים פנימיים) · editor
-├── assets/js                 main (גלובלי) · home · contact-form · a11y (נטען עצל)
+├── assets/css                main (גלובלי) · home (דף הבית) · pages (העמודים המעוצבים) · content (שאר העמודים) · editor
+├── assets/js                 main (גלובלי) · home · pages · contact-form · a11y (נטען עצל)
 ├── assets/fonts, assets/img  גופנים ותמונות ברירת מחדל מהעיצוב (WebP)
 ├── bin/build.js              Minify עם esbuild (npm run build)
 └── languages/beckwealth.pot  תבנית תרגום
@@ -45,8 +48,9 @@ beckwealth/
 ## התקנה
 
 1. העתיקו את התיקייה ל-`wp-content/themes/beckwealth` (או העלו כ-ZIP).
-2. הפעילו את התבנית. בהפעלה הראשונה נוצרים אוטומטית: דף הבית (מוגדר כעמוד ראשי), בלוג, יצירת קשר,
-   הצהרת נגישות, 3 מחלקות, 4 אנשי צוות, 3 המלצות, 7 שאלות ו-3 מאמרים לדוגמה – עם תוכן העיצוב המאושר.
+2. הפעילו את התבנית. בהפעלה הראשונה נוצרים אוטומטית: דף הבית (מוגדר כעמוד ראשי), בלוג, מי אנחנו,
+   היתרון השוויצרי, יצירת קשר, הצהרת נגישות, 3 מחלקות (עם עמודי המחלקה המעוצבים), 4 אנשי צוות, 3 המלצות,
+   7 שאלות ו-3 מאמרים לדוגמה – עם תוכן העיצוב המאושר.
 3. **Beck Wealth ‹ הגדרות**: אימייל ללידים, מפתחות Turnstile, טקסט הודעת הפרטיות, רכז/ת נגישות.
 4. **הגדרות ‹ פרטיות**: בחרו/פרסמו עמוד מדיניות פרטיות (הקישור בהודעה ובטופס נמשך משם).
 5. **מראה ‹ התאמה אישית ‹ הגדרות Beck Wealth**: פרטי קשר (טלפון, וואטסאפ), רשתות, וכל טקסט/תמונה בדף הבית.
@@ -59,6 +63,7 @@ beckwealth/
 | מה | איפה |
 |---|---|
 | טקסטים, תמונות, מספרים, שאלות-קישורים, פוטר | קסטומייזר ‹ הגדרות Beck Wealth (מחולק לפי מקטע) |
+| העמודים הפנימיים (מי אנחנו, היתרון השוויצרי, 3 המחלקות, יצירת קשר) | קסטומייזר ‹ Beck Wealth – עמודים פנימיים |
 | מחלקות (3 כרטיסים + עמודי מחלקה) | שירותים – שדות "תיאור קצר" ו"נקודות" + תמונה ראשית |
 | צוות, המלצות, שאלות ותשובות | התפריטים הייעודיים; סדר ההצגה לפי "סדר" |
 | מאמרים | פוסטים (קטגוריה ראשונה מוצגת כתגית זהב) |
@@ -76,7 +81,7 @@ beckwealth/
 
 ## ביצועים
 
-- דף הבית: 2 קבצי CSS + 3 JS (Minified, defer). עמודים פנימיים: 2 CSS + 1 JS. סרגל הנגישות נטען רק בלחיצה.
+- דף הבית: 2 קבצי CSS + 3 JS (Minified, defer). העמודים המעוצבים: 2 CSS + 2–3 JS; שאר העמודים: 2 CSS + 1 JS. סרגל הנגישות נטען רק בלחיצה.
 - גופנים מקומיים עם `font-display: swap` ו-preload לשניים הקריטיים; תמונות WebP, `loading="lazy"`, `fetchpriority="high"` להירו.
 - שאילתות: `no_found_rows`, ללא מטא/טרם cache כשלא נדרש, ספירת לידים ב-transient (5 דק').
 - **Cache מלא (LiteSpeed/WP Rocket/Cloudflare):** ה-nonce של הטופס תקף 12–24 שעות – הגדירו TTL לעמודים ≤ 12 שעות, או הפעילו ESI ב-LiteSpeed (התבנית רושמת את ה-nonce ל-ESI אוטומטית). תגובות הטופס נשלחות עם `DONOTCACHEPAGE`.

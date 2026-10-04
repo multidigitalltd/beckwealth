@@ -87,11 +87,15 @@ function beckwealth_legacy_seed_services(): array {
  * (כלומר הלקוח לא ערך אותו). רץ פעם אחת לכל גרסת תוכן.
  */
 function beckwealth_upgrade_seeded_services(): void {
-	$rev = 2;
-	if ( (int) get_option( 'beckwealth_content_rev', 0 ) >= $rev ) {
+	$rev = 3;
+	$cur = (int) get_option( 'beckwealth_content_rev', 0 );
+	if ( $cur >= $rev ) {
 		return;
 	}
-	if ( get_option( 'beckwealth_seeded' ) ) {
+	if ( $cur >= 1 && $cur < 3 ) {
+		beckwealth_seed_design_pages(); // גרסה 3: עמודי "מי אנחנו" ו"היתרון השוויצרי".
+	}
+	if ( get_option( 'beckwealth_seeded' ) && $cur < 2 ) {
 		$legacy = beckwealth_legacy_seed_services();
 		foreach ( beckwealth_seed_services() as [ $title, $tagline, $bullets, $slug ] ) {
 			$post = get_page_by_path( $slug, OBJECT, 'service' );
@@ -117,6 +121,34 @@ function beckwealth_upgrade_seeded_services(): void {
 }
 add_action( 'after_switch_theme', 'beckwealth_upgrade_seeded_services', 30 );
 add_action( 'admin_init', 'beckwealth_upgrade_seeded_services' );
+
+/**
+ * עמודי העיצוב הפנימיים: "מי אנחנו" ו"היתרון השוויצרי" עם התבניות הייעודיות.
+ * נוצרים רק אם אין עמוד עם אותה תבנית ואין עמוד באותו slug.
+ */
+function beckwealth_seed_design_pages(): void {
+	$pages = array(
+		array( 'about', __( 'מי אנחנו', 'beckwealth' ), 'page-templates/about.php', 1 ),
+		array( 'swiss-advantage', __( 'היתרון השוויצרי', 'beckwealth' ), 'page-templates/swiss-advantage.php', 2 ),
+	);
+	foreach ( $pages as [ $slug, $title, $template, $order ] ) {
+		if ( beckwealth_template_page_url( $template ) || get_page_by_path( $slug ) ) {
+			continue;
+		}
+		$id = wp_insert_post(
+			array(
+				'post_type'   => 'page',
+				'post_status' => 'publish',
+				'post_title'  => $title,
+				'post_name'   => $slug,
+				'menu_order'  => $order,
+			)
+		);
+		if ( $id && ! is_wp_error( $id ) ) {
+			update_post_meta( $id, '_wp_page_template', $template );
+		}
+	}
+}
 
 /**
  * הרצת ה-seed.
@@ -222,6 +254,7 @@ function beckwealth_seed_content(): void {
 	} else {
 		$blog_id = $blog->ID;
 	}
+	beckwealth_seed_design_pages();
 	if ( ! get_page_by_path( 'contact' ) ) {
 		$contact_id = wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_title' => __( 'יצירת קשר', 'beckwealth' ), 'post_name' => 'contact' ) );
 		if ( $contact_id && ! is_wp_error( $contact_id ) ) {
@@ -238,6 +271,6 @@ function beckwealth_seed_content(): void {
 	}
 
 	update_option( 'beckwealth_seeded', BECKWEALTH_VERSION, false );
-	update_option( 'beckwealth_content_rev', 2, false );
+	update_option( 'beckwealth_content_rev', 3, false );
 }
 add_action( 'after_switch_theme', 'beckwealth_seed_content', 20 );

@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BECKWEALTH_VERSION', '1.0.1' );
+define( 'BECKWEALTH_VERSION', '1.1.0' );
 define( 'BECKWEALTH_DIR', get_template_directory() );
 define( 'BECKWEALTH_URI', get_template_directory_uri() );
 
@@ -32,9 +32,11 @@ if ( version_compare( PHP_VERSION, '8.0', '<' ) ) {
 $beckwealth_modules = array(
 	'settings',       // הגדרות התבנית (אופציה אחת) + גישה אחידה.
 	'home-defaults',  // שדות תוכן דף הבית וברירות מחדל מהעיצוב.
+	'pages-defaults', // שדות תוכן העמודים הפנימיים (מי אנחנו, היתרון השוויצרי, מחלקות, יצירת קשר).
 	'setup',          // הגדרות בסיס, תמיכות, תפריטים, גדלי תמונות.
 	'nav-fallback',   // תפריטים חלופיים כשלא שויך תפריט.
 	'template-tags',  // פונקציות עזר לתבניות.
+	'pages',          // עזרי העמודים הפנימיים: זיהוי תבניות, מקטעים משותפים.
 	'post-types',     // סוגי תוכן: שירותים, צוות, המלצות, שאלות.
 	'customizer',     // הגדרות אתר בקסטומייזר.
 	'enqueue',        // טעינת CSS/JS מותנית.

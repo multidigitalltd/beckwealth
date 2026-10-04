@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function beckwealth_setup(): void {
 	load_theme_textdomain( 'beckwealth', BECKWEALTH_DIR . '/languages' );
+	beckwealth_force_rtl();
 
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
@@ -52,6 +53,45 @@ function beckwealth_setup(): void {
 	$GLOBALS['content_width'] = 1200;
 }
 add_action( 'after_setup_theme', 'beckwealth_setup' );
+
+/**
+ * האם לכפות כיוון RTL: התבנית בעברית (RTL-first). נכפה כשהשפה עברית, או כשלא נבחרה שפה
+ * לאתר (התקנה באנגלית כברירת מחדל, בלי חבילת שפה) – כך העיצוב נכון גם בלי להתקין עברית.
+ * אתר רב-לשוני שבו נבחרה שפה אחרת במפורש אינו מושפע.
+ *
+ * @return bool
+ */
+function beckwealth_should_force_rtl(): bool {
+	$locale = determine_locale();
+	$force  = str_starts_with( $locale, 'he' ) || ( 'en_US' === $locale && '' === (string) get_option( 'WPLANG', '' ) );
+	/**
+	 * מאפשר לבטל/לכפות RTL.
+	 *
+	 * @param bool $force האם לכפות.
+	 */
+	return (bool) apply_filters( 'beckwealth_force_rtl', $force );
+}
+
+/**
+ * כפיית RTL: כיוון הטקסט של WP_Locale (משפיע על is_rtl, גיליונות -rtl ועורך) ו-dir="rtl" ב-<html>.
+ */
+function beckwealth_force_rtl(): void {
+	if ( ! beckwealth_should_force_rtl() ) {
+		return;
+	}
+	if ( isset( $GLOBALS['wp_locale'] ) && $GLOBALS['wp_locale'] instanceof WP_Locale ) {
+		$GLOBALS['wp_locale']->text_direction = 'rtl';
+	}
+	add_filter(
+		'language_attributes',
+		static function ( string $output ): string {
+			if ( false === stripos( $output, 'dir=' ) ) {
+				return 'dir="rtl" ' . $output;
+			}
+			return (string) preg_replace( '/dir="ltr"/i', 'dir="rtl"', $output );
+		}
+	);
+}
 
 /**
  * שמות ידידותיים לגדלי תמונות בממשק המדיה.

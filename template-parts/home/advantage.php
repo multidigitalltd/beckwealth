@@ -101,7 +101,7 @@ $bw_columns = array(
 		</div>
 		<div class="advantage__links" data-reveal>
 			<?php if ( beckwealth_mod( 'adv_link1_label' ) ) : ?>
-				<a class="bw-link bw-link--2" href="<?php echo esc_url( (string) beckwealth_mod( 'adv_link1_url' ) ); ?>"><?php echo esc_html( beckwealth_mod( 'adv_link1_label' ) ); ?></a>
+				<a class="bw-link bw-link--2" href="<?php echo esc_url( (string) beckwealth_mod( 'adv_link1_url' ) ?: beckwealth_swiss_url() ); ?>"><?php echo esc_html( beckwealth_mod( 'adv_link1_label' ) ); ?></a>
 			<?php endif; ?>
 			<?php if ( beckwealth_mod( 'adv_link2_label' ) ) : ?>
 				<a class="bw-link bw-link--2" href="<?php echo esc_url( (string) beckwealth_mod( 'adv_link2_url' ) ); ?>"><?php echo esc_html( beckwealth_mod( 'adv_link2_label' ) ); ?></a>

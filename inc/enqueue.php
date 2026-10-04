@@ -5,7 +5,8 @@
  * מבנה הנכסים:
  *  - main.css / main.js           – גלובלי (בסיס, כותרת, פוטר, פרטיות, נגישות).
  *  - home.css / home.js           – דף הבית בלבד.
- *  - content.css                  – עמודי תוכן/ארכיון/בלוג (לא בדף הבית).
+ *  - pages.css / pages.js         – העמודים הפנימיים המעוצבים (מי אנחנו, היתרון השוויצרי, מחלקות, יצירת קשר).
+ *  - content.css                  – שאר עמודי התוכן/ארכיון/בלוג.
  *  - contact-form.js              – רק כשטופס יצירת קשר מוצג (נטען מתוך הטופס).
  *  - a11y.js                      – סרגל נגישות, נטען עצל בלחיצה ראשונה.
  *
@@ -78,8 +79,11 @@ function beckwealth_enqueue_assets(): void {
 	wp_enqueue_style( 'beckwealth-main', beckwealth_asset_url( 'assets/css/main.css' ), array(), beckwealth_asset_version( 'assets/css/main.css' ) );
 
 	// --- CSS לפי עמוד ---
+	$is_design_page = beckwealth_is_design_page();
 	if ( is_front_page() ) {
 		wp_enqueue_style( 'beckwealth-home', beckwealth_asset_url( 'assets/css/home.css' ), array( 'beckwealth-main' ), beckwealth_asset_version( 'assets/css/home.css' ) );
+	} elseif ( $is_design_page ) {
+		wp_enqueue_style( 'beckwealth-pages', beckwealth_asset_url( 'assets/css/pages.css' ), array( 'beckwealth-main' ), beckwealth_asset_version( 'assets/css/pages.css' ) );
 	} else {
 		wp_enqueue_style( 'beckwealth-content', beckwealth_asset_url( 'assets/css/content.css' ), array( 'beckwealth-main' ), beckwealth_asset_version( 'assets/css/content.css' ) );
 	}
@@ -115,6 +119,20 @@ function beckwealth_enqueue_assets(): void {
 			beckwealth_asset_url( 'assets/js/home.js' ),
 			array(),
 			beckwealth_asset_version( 'assets/js/home.js' ),
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+	}
+
+	// --- JS העמודים הפנימיים המעוצבים (reveal, שאלות, ציר זמן, שעונים) ---
+	if ( $is_design_page ) {
+		wp_enqueue_script(
+			'beckwealth-pages',
+			beckwealth_asset_url( 'assets/js/pages.js' ),
+			array(),
+			beckwealth_asset_version( 'assets/js/pages.js' ),
 			array(
 				'strategy'  => 'defer',
 				'in_footer' => true,

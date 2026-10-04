@@ -1,6 +1,6 @@
 <?php
 /**
- * קסטומייזר: פרטי קשר, רשתות, ותוכן דף הבית (נבנה מ-home-defaults.php).
+ * קסטומייזר: פרטי קשר, רשתות, תוכן דף הבית (home-defaults.php) והעמודים הפנימיים (pages-defaults.php).
  *
  * @package BeckWealth
  */
@@ -86,13 +86,26 @@ function beckwealth_customize_register( WP_Customize_Manager $wp_customize ): vo
 		$wp_customize->add_control( 'beckwealth_social_' . $key, array( 'type' => 'url', 'label' => $label, 'section' => 'beckwealth_social' ) );
 	}
 
-	/* ---------- תוכן דף הבית – נבנה אוטומטית ---------- */
+	/* ---------- עמודים פנימיים – פאנל נפרד ---------- */
+	$wp_customize->add_panel(
+		'beckwealth_pages_panel',
+		array(
+			'title'       => __( 'Beck Wealth – עמודים פנימיים', 'beckwealth' ),
+			'description' => __( 'טקסטים ותמונות של העמודים: מי אנחנו, היתרון השוויצרי, שלוש המחלקות ויצירת קשר. התבניות משויכות לעמודים אוטומטית בהפעלה.', 'beckwealth' ),
+			'priority'    => 11,
+		)
+	);
+
+	/* ---------- תוכן דף הבית והעמודים הפנימיים – נבנה אוטומטית ---------- */
 	$priority = 10;
 	foreach ( beckwealth_home_sections() as $section_id => $title ) {
 		$wp_customize->add_section( 'beckwealth_' . $section_id, array( 'title' => $title, 'panel' => 'beckwealth_panel', 'priority' => $priority++ ) );
 	}
+	foreach ( beckwealth_page_sections() as $section_id => $title ) {
+		$wp_customize->add_section( 'beckwealth_' . $section_id, array( 'title' => $title, 'panel' => 'beckwealth_pages_panel', 'priority' => $priority++ ) );
+	}
 
-	foreach ( beckwealth_home_fields() as $key => [ $label, $type, $default, $section ] ) {
+	foreach ( beckwealth_home_fields() + beckwealth_page_fields() as $key => [ $label, $type, $default, $section ] ) {
 		$setting_id = 'bw_' . $key;
 		$sanitize   = match ( $type ) {
 			'textarea' => 'sanitize_textarea_field',

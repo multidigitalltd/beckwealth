@@ -165,6 +165,174 @@ function beckwealth_contact_form( array $args = array() ): void {
 }
 
 /**
+ * השדות המוסתרים המשותפים לכל גרסאות טופס יצירת הקשר (action, הפניה, nonce, זמן).
+ */
+function beckwealth_contact_form_hidden(): void {
+	?>
+	<input type="hidden" name="action" value="beckwealth_contact">
+	<input type="hidden" name="bw_redirect" value="<?php echo esc_url( remove_query_arg( array( 'contact', 'newsletter' ), get_permalink() ?: home_url( '/' ) ) ); ?>">
+	<?php wp_nonce_field( 'beckwealth_contact', 'bw_nonce' ); ?>
+	<input type="hidden" name="bw_ts" value="<?php echo esc_attr( (string) time() ); ?>">
+	<?php
+}
+
+/**
+ * Honeypot – מוסתר ממשתמשים; בוטים ימלאו אותו.
+ *
+ * @param string $uid מזהה ייחודי.
+ */
+function beckwealth_contact_form_honeypot( string $uid ): void {
+	?>
+	<div class="bw-hp" aria-hidden="true">
+		<label for="<?php echo esc_attr( $uid ); ?>-website">Website</label>
+		<input type="text" id="<?php echo esc_attr( $uid ); ?>-website" name="bw_website" tabindex="-1" autocomplete="off">
+	</div>
+	<?php
+}
+
+/**
+ * טופס מקוצר (עמודי המחלקות, רקע כהה): שם, טלפון, נושא.
+ *
+ * @param string $subject נושא ברירת מחדל (שם המחלקה הנוכחית).
+ */
+function beckwealth_contact_form_compact( string $subject = '' ): void {
+	$uid      = wp_unique_id( 'bw-c-' );
+	$subjects = beckwealth_contact_subjects();
+	if ( $subject && in_array( $subject, $subjects, true ) ) {
+		$subjects = array_merge( array( $subject ), array_diff( $subjects, array( $subject ) ) );
+	}
+	beckwealth_enqueue_contact_form_assets();
+	?>
+	<div class="contact-form-wrap contact-form-wrap--compact" id="contact-form">
+		<?php beckwealth_form_notice( 'contact' ); ?>
+		<form class="contact-form contact-form--compact" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
+			<?php beckwealth_contact_form_hidden(); ?>
+			<div class="contact-form__row contact-form__row--2">
+				<div class="form-field">
+					<label class="screen-reader-text" for="<?php echo esc_attr( $uid ); ?>-name"><?php esc_html_e( 'שם מלא', 'beckwealth' ); ?></label>
+					<input class="bw-input" type="text" id="<?php echo esc_attr( $uid ); ?>-name" name="bw_name" placeholder="<?php esc_attr_e( 'שם מלא', 'beckwealth' ); ?>" required autocomplete="name" maxlength="100">
+				</div>
+				<div class="form-field">
+					<label class="screen-reader-text" for="<?php echo esc_attr( $uid ); ?>-phone"><?php esc_html_e( 'טלפון', 'beckwealth' ); ?></label>
+					<input class="bw-input" type="tel" id="<?php echo esc_attr( $uid ); ?>-phone" name="bw_phone" placeholder="<?php esc_attr_e( 'טלפון', 'beckwealth' ); ?>" required autocomplete="tel" inputmode="tel" maxlength="30" pattern="[0-9+\-\s()]{7,20}">
+				</div>
+			</div>
+			<div class="form-field">
+				<label class="screen-reader-text" for="<?php echo esc_attr( $uid ); ?>-subject"><?php esc_html_e( 'נושא הפנייה', 'beckwealth' ); ?></label>
+				<select class="bw-input" id="<?php echo esc_attr( $uid ); ?>-subject" name="bw_subject">
+					<?php foreach ( $subjects as $option ) : ?>
+						<option value="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<?php beckwealth_contact_form_honeypot( $uid ); ?>
+			<?php beckwealth_turnstile_widget(); ?>
+			<div class="contact-form__actions">
+				<button type="submit" class="bw-btn bw-btn--paper"><?php echo esc_html( beckwealth_mod( 'ip_form_submit' ) ); ?><span class="bw-dia bw-dia--5 bw-dia--cur" aria-hidden="true"></span></button>
+			</div>
+			<p class="contact-form__more"><?php echo esc_html( beckwealth_mod( 'ip_form_note' ) ); ?> <a href="<?php echo esc_url( beckwealth_contact_url() ); ?>"><?php echo esc_html( beckwealth_mod( 'ip_form_link' ) ); ?></a></p>
+			<p class="form-live screen-reader-text" aria-live="polite"></p>
+		</form>
+	</div>
+	<?php
+}
+
+/**
+ * טופס "מכתב פנייה" (עמוד יצירת קשר): תוויות גלויות, כרטיס בהיר, מצב "תודה" אחרי שליחה.
+ */
+function beckwealth_contact_form_letter(): void {
+	$uid = wp_unique_id( 'bw-l-' );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- דגל תצוגה בלבד.
+	$status = isset( $_GET['contact'] ) ? sanitize_key( wp_unslash( $_GET['contact'] ) ) : '';
+	beckwealth_enqueue_contact_form_assets();
+	?>
+	<div class="contact-form-wrap cp-letter" id="contact-form" data-reveal>
+		<span class="cp-letter__inner" aria-hidden="true"></span>
+		<?php if ( 'success' === $status ) : ?>
+			<div class="cp-thanks" role="status" tabindex="-1">
+				<div class="cp-thanks__k"><span class="ip-dash" aria-hidden="true"></span><span class="bw-kicker"><?php echo esc_html( beckwealth_mod( 'cp_thanks_kicker' ) ); ?></span><span class="ip-dash" aria-hidden="true"></span></div>
+				<h2 class="cp-thanks__title"><?php echo esc_html( beckwealth_mod( 'cp_thanks_title' ) ); ?></h2>
+				<p class="cp-thanks__text"><?php echo esc_html( beckwealth_mod( 'cp_thanks_text' ) ); ?></p>
+				<a class="cp-thanks__again" href="<?php echo esc_url( remove_query_arg( 'contact' ) . '#contact-form' ); ?>"><?php echo esc_html( beckwealth_mod( 'cp_thanks_again' ) ); ?></a>
+			</div>
+		<?php else : ?>
+			<div class="cp-letter__body">
+				<div class="cp-letter__head">
+					<h2 class="cp-letter__title"><?php echo esc_html( beckwealth_mod( 'cp_form_title' ) ); ?></h2>
+					<?php beckwealth_logo_img( 'cp-letter__logo', '' ); ?>
+				</div>
+				<?php beckwealth_form_notice( 'contact', true ); ?>
+				<form class="contact-form contact-form--letter" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
+					<?php beckwealth_contact_form_hidden(); ?>
+					<div class="cp-letter__grid">
+						<div class="form-field cp-field">
+							<label for="<?php echo esc_attr( $uid ); ?>-name"><?php esc_html_e( 'שם מלא', 'beckwealth' ); ?></label>
+							<input class="cp-input" type="text" id="<?php echo esc_attr( $uid ); ?>-name" name="bw_name" required autocomplete="name" maxlength="100">
+						</div>
+						<div class="form-field cp-field">
+							<label for="<?php echo esc_attr( $uid ); ?>-phone"><?php esc_html_e( 'טלפון', 'beckwealth' ); ?></label>
+							<input class="cp-input" type="tel" id="<?php echo esc_attr( $uid ); ?>-phone" name="bw_phone" required autocomplete="tel" inputmode="tel" maxlength="30" pattern="[0-9+\-\s()]{7,20}">
+						</div>
+						<div class="form-field cp-field cp-field--full">
+							<label for="<?php echo esc_attr( $uid ); ?>-email"><?php esc_html_e( 'אימייל', 'beckwealth' ); ?></label>
+							<input class="cp-input" type="email" id="<?php echo esc_attr( $uid ); ?>-email" name="bw_email" autocomplete="email" maxlength="150">
+						</div>
+						<div class="form-field cp-field">
+							<label for="<?php echo esc_attr( $uid ); ?>-subject"><?php esc_html_e( 'נושא הפנייה', 'beckwealth' ); ?></label>
+							<select class="cp-input" id="<?php echo esc_attr( $uid ); ?>-subject" name="bw_subject">
+								<?php foreach ( beckwealth_contact_subjects() as $option ) : ?>
+									<option value="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<div class="form-field cp-field">
+							<label for="<?php echo esc_attr( $uid ); ?>-wealth"><?php esc_html_e( 'היקף הון להתייחסות', 'beckwealth' ); ?></label>
+							<select class="cp-input" id="<?php echo esc_attr( $uid ); ?>-wealth" name="bw_wealth">
+								<?php
+								$wealth = beckwealth_mod_lines( 'contact_wealth' );
+								if ( count( $wealth ) > 1 ) {
+									array_unshift( $wealth, array_pop( $wealth ) ); // "מעדיפים לא לציין" ראשון, כמו בעיצוב.
+								}
+								foreach ( $wealth as $option ) :
+									?>
+									<option value="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<?php beckwealth_contact_form_honeypot( $uid ); ?>
+					<?php beckwealth_turnstile_widget(); ?>
+					<div class="cp-letter__foot">
+						<label class="bw-check cp-check">
+							<input type="checkbox" name="bw_newsletter" value="1">
+							<?php echo esc_html( beckwealth_mod( 'contact_news_label' ) ); ?>
+						</label>
+						<button type="submit" class="bw-btn bw-btn--letter"><?php echo esc_html( beckwealth_mod( 'cp_form_submit' ) ); ?></button>
+					</div>
+					<p class="cp-letter__note"><?php echo esc_html( beckwealth_mod( 'cp_form_note' ) ); ?></p>
+					<p class="contact__consent cp-letter__consent">
+						<?php
+						$policy = get_privacy_policy_url();
+						if ( $policy ) {
+							printf(
+								/* translators: %s: privacy policy link */
+								esc_html__( 'בשליחת הטופס אתם מאשרים יצירת קשר בהתאם ל%s.', 'beckwealth' ),
+								'<a href="' . esc_url( $policy ) . '">' . esc_html__( 'מדיניות הפרטיות', 'beckwealth' ) . '</a>'
+							);
+						} else {
+							esc_html_e( 'בשליחת הטופס אתם מאשרים יצירת קשר בהתאם למדיניות הפרטיות.', 'beckwealth' );
+						}
+						?>
+					</p>
+					<p class="form-live screen-reader-text" aria-live="polite"></p>
+				</form>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+/**
  * טופס הרשמה לניוזלטר (מקטע הבלוג).
  */
 function beckwealth_newsletter_form(): void {
