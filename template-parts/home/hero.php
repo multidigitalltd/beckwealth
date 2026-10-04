@@ -46,6 +46,9 @@ $bw_img_b = beckwealth_mod( 'hero_image_b' ) ?: BECKWEALTH_URI . '/assets/img/he
 					<span class="hero__rule" aria-hidden="true"></span>
 				</div>
 				<h1 id="hero-title" class="hero__title"><?php echo beckwealth_highlight( (string) beckwealth_mod( 'hero_title' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?></h1>
+				<?php if ( beckwealth_mod( 'hero_subtitle' ) ) : ?>
+					<p class="hero__sub"><?php echo esc_html( beckwealth_mod( 'hero_subtitle' ) ); ?></p>
+				<?php endif; ?>
 				<p class="hero__text"><?php echo esc_html( beckwealth_mod( 'hero_text' ) ); ?></p>
 				<div class="hero__actions">
 					<?php beckwealth_cta( (string) beckwealth_mod( 'hero_btn_label' ), (string) beckwealth_mod( 'hero_btn_url' ) ?: beckwealth_contact_url(), 'lg' ); ?>

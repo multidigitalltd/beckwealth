@@ -35,9 +35,10 @@ function beckwealth_home_fields(): array {
 		'ticker_label'      => array( __( 'שורת "מהשוק" – תווית', 'beckwealth' ), 'text', __( 'מהשוק', 'beckwealth' ), 'header' ),
 
 		/* ---------- הירו ---------- */
-		'hero_kicker'       => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'פמילי אופיס שוויצרי · שלושה דורות', 'beckwealth' ), 'hero' ),
-		'hero_title'        => array( __( 'כותרת (טקסט בין ** יוצג בזהב)', 'beckwealth' ), 'text', __( 'ניהול הון **בבנקאות שוויצרית**, עם נוכחות מלאה בישראל', 'beckwealth' ), 'hero' ),
-		'hero_text'         => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'ליווי אישי למשפחות, ליזמים ולבעלי עסקים שרוצים את היציבות של ציריך, בלי לוותר על קרבה, על שפה ועל פגישה פנים אל פנים.', 'beckwealth' ), 'hero' ),
+		'hero_kicker'       => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'פמילי אופיס שוויצרי · שלושה דורות · מאז 1968', 'beckwealth' ), 'hero' ),
+		'hero_title'        => array( __( 'כותרת (טקסט בין ** יוצג בזהב)', 'beckwealth' ), 'text', __( 'ניהול הון **ותכנון מעבר בין-דורי**', 'beckwealth' ), 'hero' ),
+		'hero_subtitle'     => array( __( 'כותרת משנה', 'beckwealth' ), 'text', __( 'יציבות שוויצרית בנוכחות מלאה בישראל', 'beckwealth' ), 'hero' ),
+		'hero_text'         => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'תכנון אסטרטגיית השקעה למשקיעים כשירים ולמשפחות, עם כל המכשירים הפיננסיים שיש לבנקאות השוויצרית להציע. והכל, בנוכחות פיזית בישראל.', 'beckwealth' ), 'hero' ),
 		'hero_btn_label'    => array( __( 'כפתור ראשי – טקסט', 'beckwealth' ), 'text', __( 'תיאום שיחת היכרות', 'beckwealth' ), 'hero' ),
 		'hero_btn_url'      => array( __( 'כפתור ראשי – קישור', 'beckwealth' ), 'url', '#contact', 'hero' ),
 		'hero_link_label'   => array( __( 'קישור משני – טקסט', 'beckwealth' ), 'text', __( 'מה זה היתרון השוויצרי', 'beckwealth' ), 'hero' ),
@@ -59,8 +60,8 @@ function beckwealth_home_fields(): array {
 
 		/* ---------- שוויץ ---------- */
 		'swiss_kicker'      => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'שוויץ', 'beckwealth' ), 'swiss' ),
-		'swiss_title'       => array( __( 'כותרת', 'beckwealth' ), 'text', __( 'מאה שנה של יציבות, במרחק שיחה אחת', 'beckwealth' ), 'swiss' ),
-		'swiss_text'        => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'שוויץ אינה רק כתובת. היא מערכת בנקאית שנבנתה על רציפות, על חוקי סודיות ופיקוח קפדניים ועל מטבע שמחזיק את ערכו לאורך דורות. ההון שלכם יושב שם, ואנחנו יושבים כאן.', 'beckwealth' ), 'swiss' ),
+		'swiss_title'       => array( __( 'כותרת', 'beckwealth' ), 'text', __( 'יציבות פיננסית ובנקאות מתוחכמת, במרחק שיחה אחת', 'beckwealth' ), 'swiss' ),
+		'swiss_text'        => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'שוויץ אינה רק כתובת. היא מערכת בנקאית שנבנתה על רציפות, יציבות רגולטורית איתנה, עם חוקי סודיות ופיקוח קפדניים ועם מטבע יציב. ההון שלכם יושב שם, ואנחנו יושבים כאן.', 'beckwealth' ), 'swiss' ),
 		'swiss_cards'       => array( __( 'ארבעה כרטיסים – שורה לכל כרטיס: תווית לועזית|כיתוב', 'beckwealth' ), 'textarea', "THE ALPS|נוף שלא משתנה. גם לא הכלכלה שמתחתיו\nZÜRICH|בהנהופשטראסה — לב הבנקאות הפרטית\nLAKE ZÜRICH|שקט, שמרנות, טווח ארוך\nFINMA|פיקוח שוויצרי על כל שקל וכל פרנק", 'swiss' ),
 		'swiss_image_1'     => array( __( 'תמונה 1 (4:5)', 'beckwealth' ), 'image', 0, 'swiss' ),
 		'swiss_image_2'     => array( __( 'תמונה 2 (4:5)', 'beckwealth' ), 'image', 0, 'swiss' ),
@@ -72,10 +73,10 @@ function beckwealth_home_fields(): array {
 		'adv_title'         => array( __( 'כותרת', 'beckwealth' ), 'text', __( 'הביטחון של ציריך, הקרבה של תל אביב', 'beckwealth' ), 'advantage' ),
 		'adv_ch_title'      => array( __( 'עמודה שוויץ – כותרת', 'beckwealth' ), 'text', __( 'היתרון השוויצרי', 'beckwealth' ), 'advantage' ),
 		'adv_ch_tag'        => array( __( 'עמודה שוויץ – תווית לועזית', 'beckwealth' ), 'text', 'ZÜRICH', 'advantage' ),
-		'adv_ch_points'     => array( __( 'עמודה שוויץ – נקודות (שורה לכל נקודה: מודגש|טקסט)', 'beckwealth' ), 'textarea', "יציבות ורגולציה.|מערכת בנקאית עם מעל מאה שנות רציפות, תחת פיקוח FINMA.\nפיזור בין מדינות ומטבעות.|שכבת ביטחון להון שאינה תלויה במערכת אחת.\nגישה לשווקים ומכשירים.|פלטפורמות השקעה גלובליות שאינן זמינות מישראל.", 'advantage' ),
-		'adv_il_title'      => array( __( 'עמודה ישראל – כותרת', 'beckwealth' ), 'text', __( 'הנוכחות בישראל', 'beckwealth' ), 'advantage' ),
+		'adv_ch_points'     => array( __( 'עמודה שוויץ – נקודות (שורה לכל נקודה: מודגש|טקסט)', 'beckwealth' ), 'textarea', "יציבות ורגולציה.|מערכת בנקאית עם מעל מאה שנות רציפות, תחת פיקוח FINMA.\nגישה לשווקים ולמכשירים.|נגישות לפלטפורמות השקעה גלובליות ומגוונות, שאינן זמינות בישראל.\nפיזור מטבעות ומדינות.|שכבת ביטחון להון שאינה תלויה במערכת אחת.", 'advantage' ),
+		'adv_il_title'      => array( __( 'עמודה ישראל – כותרת', 'beckwealth' ), 'text', __( 'נוכחות מלאה בישראל', 'beckwealth' ), 'advantage' ),
 		'adv_il_tag'        => array( __( 'עמודה ישראל – תווית לועזית', 'beckwealth' ), 'text', 'TEL AVIV', 'advantage' ),
-		'adv_il_points'     => array( __( 'עמודה ישראל – נקודות (מודגש|טקסט)', 'beckwealth' ), 'textarea', "איש קשר בעברית.|באזור הזמן שלכם, זמין כשצריך אותו.\nמיסוי ורגולציה מקומית.|ההיכרות עם הצד הישראלי היא חלק מהשירות.\nפגישות פנים אל פנים.|בתל אביב, לא בציריך.", 'advantage' ),
+		'adv_il_points'     => array( __( 'עמודה ישראל – נקודות (מודגש|טקסט)', 'beckwealth' ), 'textarea', "משרד ישראלי.|עם אנשי מקצוע דוברי עברית.\nמיסוי ורגולציה.|עמידה בדרישות הרגולציה בישראל, ועבודה עם מומחי מיסוי בדין הישראלי.\nפגישות אישיות.|פנים אל פנים, בתל אביב או בציריך.", 'advantage' ),
 		'adv_link1_label'   => array( __( 'קישור 1 – טקסט', 'beckwealth' ), 'text', __( 'לעמוד היתרון השוויצרי המלא', 'beckwealth' ), 'advantage' ),
 		'adv_link1_url'     => array( __( 'קישור 1 – כתובת', 'beckwealth' ), 'url', '#advantage', 'advantage' ),
 		'adv_link2_label'   => array( __( 'קישור 2 – טקסט', 'beckwealth' ), 'text', __( 'ליצירת קשר', 'beckwealth' ), 'advantage' ),
@@ -108,7 +109,7 @@ function beckwealth_home_fields(): array {
 		/* ---------- העברה בין-דורית ---------- */
 		'legacy_kicker'     => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'העברה בין־דורית', 'beckwealth' ), 'legacy' ),
 		'legacy_title'      => array( __( 'כותרת', 'beckwealth' ), 'text', __( 'מה יקרה להון המשפחה אחרי 120?', 'beckwealth' ), 'legacy' ),
-		'legacy_text'       => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'רוב המריבות בין יורשים נולדות מחוסר בהירות, לא מחוסר כסף. שלוש השאלות האלה עולות כמעט בכל משפחה, ואת שלושתן אפשר להסדיר מראש.', 'beckwealth' ), 'legacy' ),
+		'legacy_text'       => array( __( 'טקסט', 'beckwealth' ), 'textarea', __( 'רוב המריבות בין יורשים נוצרות מחוסר בהירות, או מתחושה של חוסר צדק, ולא מחוסר כסף. והאמוציות יכולות לכלות את הכסף במאבק על תחושת צדק. כדי למנוע את זה, חשוב להסדיר את השאלות החשובות מראש.', 'beckwealth' ), 'legacy' ),
 		'legacy_btn_label'  => array( __( 'כפתור – טקסט', 'beckwealth' ), 'text', __( 'לשיחה על תכנון ההעברה', 'beckwealth' ), 'legacy' ),
 		'legacy_btn_url'    => array( __( 'כפתור – קישור', 'beckwealth' ), 'url', '#contact', 'legacy' ),
 		'legacy_questions'  => array( __( 'שאלות (שורה לכל שאלה)', 'beckwealth' ), 'textarea', "איך מחלקים את הנכסים בין הילדים, בלי ליצור קרע ביניהם?\nכמה מס תשלם המשפחה על ההעברה, ומה אפשר לתכנן כבר היום?\nמי ימשיך להוביל את העסק המשפחתי, ומה יקבלו אלה שלא?", 'legacy' ),
@@ -116,7 +117,7 @@ function beckwealth_home_fields(): array {
 		/* ---------- איך זה עובד ---------- */
 		'proc_kicker'       => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'התהליך', 'beckwealth' ), 'process' ),
 		'proc_title'        => array( __( 'כותרת', 'beckwealth' ), 'text', __( 'איך זה עובד', 'beckwealth' ), 'process' ),
-		'proc_steps'        => array( __( 'שלבים (שורה לכל שלב: כותרת|טקסט)', 'beckwealth' ), 'textarea', "שיחת היכרות|שיחה חסויה של 30 דקות, בזום או בטלפון. בלי התחייבות ובלי מצגות מכירה.\nתמונת מצב|מיפוי הנכסים, הצרכים והמטרות של המשפחה. לרוב שבועיים.\nמבנה והצעה|הצעת מבנה ומדיניות השקעה מותאמת, בכתב ובשקיפות מלאה על עלויות.\nליווי שוטף|צוות קבוע בישראל ובציריך, דיווח סדור ופגישות תקופתיות.", 'process' ),
+		'proc_steps'        => array( __( 'שלבים (שורה לכל שלב: כותרת|טקסט)', 'beckwealth' ), 'textarea', "שיחת היכרות|פגישה אישית בלי התחייבות, למיפוי ראשוני של ההון והצורך המשפחתי.\nבהירות ותמונת מצב|מיפוי ברור של כלל הנכסים, הצרכים והמטרות של המשפחה, יחד עם מיפוי המדינות בהן נמצאים בני המשפחה, יוצר בהירות ראשונית.\nמבנה והצעה|הצעת מבנה ומדיניות השקעה מותאמת, בכתב ובשקיפות מלאה על עלויות.\nליווי שוטף|צוות קבוע בישראל ובציריך, דיווח סדור ופגישות תקופתיות.", 'process' ),
 		'proc_image_1'      => array( __( 'שלב 1 – תמונה (4:3)', 'beckwealth' ), 'image', 0, 'process' ),
 		'proc_image_2'      => array( __( 'שלב 2 – תמונה (4:3)', 'beckwealth' ), 'image', 0, 'process' ),
 		'proc_image_3'      => array( __( 'שלב 3 – תמונה (4:3)', 'beckwealth' ), 'image', 0, 'process' ),

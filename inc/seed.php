@@ -55,6 +55,70 @@ function beckwealth_seed_item( string $type, string $title, string $content = ''
 }
 
 /**
+ * שלוש המחלקות המאושרות: [כותרת, תיאור קצר, נקודות (שורה לכל נקודה), slug].
+ *
+ * @return array<int, array{0:string,1:string,2:string,3:string}>
+ */
+function beckwealth_seed_services(): array {
+	return array(
+		array( 'ניהול הון משפחתי', 'ניהול כלל הנכסים הפיננסיים, באמצעות בנקאות שוויצרית.', "יצירת אסטרטגיית השקעה מותאמת\nניהול השקעות בשוק ההון\nניהול סיכונים ופיזור מותאם", 'assets' ),
+		array( 'ניהול השקעות ותכנון מס', 'תכנון מבנה הנכסים הפיננסיים בישראל ובעולם, בכדי להגיע לחבות מס מינימלית.', "תכנון מס מקומי ובינלאומי\nמבנה נכסים ואחזקה\nתכנון ארוך טווח", 'tax' ),
+		array( 'נאמנות', 'הכלי הנפוץ בעולם האנגלוסקסי להעברת הון בין-דורית.', "ניהול נכסים\nקביעת יעדים ומנגנון ניהול\nהורשה מתוחכמת", 'trust' ),
+	);
+}
+
+/**
+ * גרסאות קודמות של תוכן המחלקות (מה שה-seed יצר בעבר), לפי slug.
+ * משמש לעדכון חד-פעמי באתרים שכבר הופעלו – מתעדכן רק פריט שלא נערך ידנית.
+ *
+ * @return array<string, array<int, array{0:string,1:string,2:string}>>
+ */
+function beckwealth_legacy_seed_services(): array {
+	return array(
+		'assets' => array( array( 'ניהול נכסים', 'ניהול השקעות ומעקב אחר כלל הנכסים, בבנק שוויצרי, על שמכם.', "בקרה, ניטור ואיחוד נכסים\nייעוץ פיננסי\nניהול נכסים מסורתי" ) ),
+		'tax'    => array( array( 'ייעוץ מס ופיננסי', 'תכנון המס, הפנסיה ומבנה הנכסים, בישראל ובין מדינות.', "תכנון מס\nתכנון פנסיה\nמבנה נכסים" ) ),
+		'trust'  => array( array( 'נאמנות', 'מבנים משפטיים ששומרים על ההון ועל הכוונות שלכם, לדורות הבאים.', "ניהול קרנות ונאמנויות\nתכנון ירושה ונכסים\nמבנה נכסים" ) ),
+	);
+}
+
+/**
+ * עדכון תוכן המחלקות לגרסה המאושרת האחרונה באתר שכבר הופעל.
+ * פריט מתעדכן רק אם הכותרת, התיאור והנקודות שלו זהים לגרסת seed קודמת
+ * (כלומר הלקוח לא ערך אותו). רץ פעם אחת לכל גרסת תוכן.
+ */
+function beckwealth_upgrade_seeded_services(): void {
+	$rev = 2;
+	if ( (int) get_option( 'beckwealth_content_rev', 0 ) >= $rev ) {
+		return;
+	}
+	if ( get_option( 'beckwealth_seeded' ) ) {
+		$legacy = beckwealth_legacy_seed_services();
+		foreach ( beckwealth_seed_services() as [ $title, $tagline, $bullets, $slug ] ) {
+			$post = get_page_by_path( $slug, OBJECT, 'service' );
+			if ( ! $post || empty( $legacy[ $slug ] ) ) {
+				continue;
+			}
+			$cur = array( $post->post_title, (string) get_post_meta( $post->ID, '_bw_tagline', true ), (string) get_post_meta( $post->ID, '_bw_bullets', true ) );
+			if ( ! in_array( $cur, $legacy[ $slug ], true ) ) {
+				continue; // נערך ידנית – לא נוגעים.
+			}
+			wp_update_post(
+				array(
+					'ID'           => $post->ID,
+					'post_title'   => $title,
+					'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $tagline ) . '</p><!-- /wp:paragraph -->',
+				)
+			);
+			update_post_meta( $post->ID, '_bw_tagline', $tagline );
+			update_post_meta( $post->ID, '_bw_bullets', $bullets );
+		}
+	}
+	update_option( 'beckwealth_content_rev', $rev, false );
+}
+add_action( 'after_switch_theme', 'beckwealth_upgrade_seeded_services', 30 );
+add_action( 'admin_init', 'beckwealth_upgrade_seeded_services' );
+
+/**
  * הרצת ה-seed.
  */
 function beckwealth_seed_content(): void {
@@ -64,12 +128,7 @@ function beckwealth_seed_content(): void {
 
 	// מחלקות (שירותים).
 	if ( ! beckwealth_type_has_items( 'service' ) ) {
-		$services = array(
-			array( 'ניהול נכסים', 'ניהול השקעות ומעקב אחר כלל הנכסים, בבנק שוויצרי, על שמכם.', "בקרה, ניטור ואיחוד נכסים\nייעוץ פיננסי\nניהול נכסים מסורתי", 'assets' ),
-			array( 'ייעוץ מס ופיננסי', 'תכנון המס, הפנסיה ומבנה הנכסים, בישראל ובין מדינות.', "תכנון מס\nתכנון פנסיה\nמבנה נכסים", 'tax' ),
-			array( 'נאמנות', 'מבנים משפטיים ששומרים על ההון ועל הכוונות שלכם, לדורות הבאים.', "ניהול קרנות ונאמנויות\nתכנון ירושה ונכסים\nמבנה נכסים", 'trust' ),
-		);
-		foreach ( $services as $i => [ $title, $tagline, $bullets, $slug ] ) {
+		foreach ( beckwealth_seed_services() as $i => [ $title, $tagline, $bullets, $slug ] ) {
 			$id = beckwealth_seed_item( 'service', $title, '<!-- wp:paragraph --><p>' . esc_html( $tagline ) . '</p><!-- /wp:paragraph -->', $i + 1, array( '_bw_tagline' => $tagline, '_bw_bullets' => $bullets ) );
 			if ( $id ) {
 				wp_update_post( array( 'ID' => $id, 'post_name' => $slug ) );
@@ -179,5 +238,6 @@ function beckwealth_seed_content(): void {
 	}
 
 	update_option( 'beckwealth_seeded', BECKWEALTH_VERSION, false );
+	update_option( 'beckwealth_content_rev', 2, false );
 }
 add_action( 'after_switch_theme', 'beckwealth_seed_content', 20 );
