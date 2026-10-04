@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BECKWEALTH_VERSION', '1.1.0' );
+define( 'BECKWEALTH_VERSION', '1.1.1' );
 define( 'BECKWEALTH_DIR', get_template_directory() );
 define( 'BECKWEALTH_URI', get_template_directory_uri() );
 

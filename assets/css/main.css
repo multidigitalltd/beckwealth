@@ -335,6 +335,7 @@ select.bw-input option { color: var(--bw-ink); background: var(--bw-cream); }
 	border: 1px solid var(--bw-ink-dark); box-shadow: 0 16px 48px rgba(34, 29, 24, .18); padding: 22px 26px; z-index: 1100;
 	display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
 }
+.privacy-notice[hidden] { display: none; }
 .privacy-notice__text { flex: 1 1 280px; font: 400 15px/1.6 var(--bw-font); color: var(--bw-body); }
 .privacy-notice__text a { color: var(--bw-gold-text); border-bottom: 1px solid var(--bw-gold); }
 .privacy-notice__actions { display: flex; gap: 10px; }

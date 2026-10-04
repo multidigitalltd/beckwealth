@@ -29,7 +29,7 @@ function beckwealth_privacy_notice(): void {
 			<?php endif; ?>
 		</p>
 		<div class="privacy-notice__actions">
-			<button type="button" class="btn btn--primary" data-privacy-accept><?php esc_html_e( 'הבנתי', 'beckwealth' ); ?></button>
+			<button type="button" class="bw-btn" data-privacy-accept><?php esc_html_e( 'הבנתי', 'beckwealth' ); ?></button>
 		</div>
 	</div>
 	<?php
