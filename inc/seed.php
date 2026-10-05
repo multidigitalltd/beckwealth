@@ -87,10 +87,13 @@ function beckwealth_legacy_seed_services(): array {
  * (כלומר הלקוח לא ערך אותו). רץ פעם אחת לכל גרסת תוכן.
  */
 function beckwealth_upgrade_seeded_services(): void {
-	$rev = 3;
+	$rev = 4;
 	$cur = (int) get_option( 'beckwealth_content_rev', 0 );
 	if ( $cur >= $rev ) {
 		return;
+	}
+	if ( $cur < 4 ) {
+		beckwealth_upgrade_office_email(); // גרסה 4: אימייל המשרד office@beckwealth.co.il והכתובת בבני ברק.
 	}
 	if ( $cur >= 1 && $cur < 3 ) {
 		beckwealth_seed_design_pages(); // גרסה 3: עמודי "מי אנחנו" ו"היתרון השוויצרי".
@@ -121,6 +124,31 @@ function beckwealth_upgrade_seeded_services(): void {
 }
 add_action( 'after_switch_theme', 'beckwealth_upgrade_seeded_services', 30 );
 add_action( 'admin_init', 'beckwealth_upgrade_seeded_services' );
+
+/**
+ * אימייל המשרד (office@beckwealth.co.il) והכתובת בבני ברק מחליפים את הערכים הישנים/הזמניים בכל מקום שנשמר באתר:
+ * הפוטר ועמוד יצירת הקשר (אם עדיין מכילים את הישנים), "אימייל ליצירת קשר" (אם לא הוגדר, או שהוא אימייל המנהל)
+ * ו"כתובת" (אם ריקה).
+ */
+function beckwealth_upgrade_office_email(): void {
+	$old_addr = 'מגדל אלון 2, תל אביב';
+	foreach ( array( 'bw_footer_il_text', 'bw_cp_tlv_addr' ) as $mod ) {
+		$value = get_theme_mod( $mod );
+		if ( is_string( $value ) && ( str_contains( $value, 'israel@beckwealth.ch' ) || str_contains( $value, $old_addr ) ) ) {
+			set_theme_mod( $mod, str_replace( array( 'israel@beckwealth.ch', $old_addr ), array( BECKWEALTH_OFFICE_EMAIL, BECKWEALTH_OFFICE_ADDRESS ), $value ) );
+		}
+	}
+	if ( 'https://www.openstreetmap.org/?mlat=32.0705&mlon=34.7935#map=16/32.0705/34.7935' === (string) get_theme_mod( 'bw_cp_tlv_map', '' ) ) {
+		remove_theme_mod( 'bw_cp_tlv_map' ); // חוזר לברירת המחדל החדשה (מגדל ב.ס.ר 4).
+	}
+	if ( '' === (string) get_theme_mod( 'beckwealth_address', '' ) ) {
+		set_theme_mod( 'beckwealth_address', BECKWEALTH_OFFICE_ADDRESS );
+	}
+	$email = (string) get_theme_mod( 'beckwealth_email', '' );
+	if ( '' === $email || $email === (string) get_option( 'admin_email' ) || 'israel@beckwealth.ch' === $email ) {
+		set_theme_mod( 'beckwealth_email', BECKWEALTH_OFFICE_EMAIL );
+	}
+}
 
 /**
  * עמודי העיצוב הפנימיים: "מי אנחנו" ו"היתרון השוויצרי" עם התבניות הייעודיות.
@@ -271,6 +299,6 @@ function beckwealth_seed_content(): void {
 	}
 
 	update_option( 'beckwealth_seeded', BECKWEALTH_VERSION, false );
-	update_option( 'beckwealth_content_rev', 3, false );
+	update_option( 'beckwealth_content_rev', 4, false );
 }
 add_action( 'after_switch_theme', 'beckwealth_seed_content', 20 );

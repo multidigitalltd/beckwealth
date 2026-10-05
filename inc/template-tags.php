@@ -83,8 +83,8 @@ function beckwealth_contact_details(): array {
 	return array(
 		'phone'    => (string) get_theme_mod( 'beckwealth_phone', '' ),
 		'whatsapp' => (string) get_theme_mod( 'beckwealth_whatsapp', '' ),
-		'email'    => (string) get_theme_mod( 'beckwealth_email', get_option( 'admin_email' ) ),
-		'address'  => (string) get_theme_mod( 'beckwealth_address', '' ),
+		'email'    => (string) get_theme_mod( 'beckwealth_email', BECKWEALTH_OFFICE_EMAIL ),
+		'address'  => (string) get_theme_mod( 'beckwealth_address', BECKWEALTH_OFFICE_ADDRESS ),
 		'hours'    => (string) get_theme_mod( 'beckwealth_hours', '' ),
 	);
 }

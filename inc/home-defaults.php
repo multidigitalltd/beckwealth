@@ -165,7 +165,7 @@ function beckwealth_home_fields(): array {
 		/* ---------- פוטר ---------- */
 		'footer_cities'     => array( __( 'שורת ערים', 'beckwealth' ), 'text', __( 'ציריך · תל אביב', 'beckwealth' ), 'footer' ),
 		'footer_il_title'   => array( __( 'עמודה 1 – כותרת', 'beckwealth' ), 'text', __( 'משרד ישראל', 'beckwealth' ), 'footer' ),
-		'footer_il_text'    => array( __( 'עמודה 1 – טקסט (שורות)', 'beckwealth' ), 'textarea', "מגדל אלון 2, תל אביב\n03-000-0000\nisrael@beckwealth.ch", 'footer' ),
+		'footer_il_text'    => array( __( 'עמודה 1 – טקסט (שורות)', 'beckwealth' ), 'textarea', BECKWEALTH_OFFICE_ADDRESS . "\n03-000-0000\n" . BECKWEALTH_OFFICE_EMAIL, 'footer' ),
 		'footer_ch_title'   => array( __( 'עמודה 2 – כותרת', 'beckwealth' ), 'text', __( 'משרד ציריך', 'beckwealth' ), 'footer' ),
 		'footer_ch_text'    => array( __( 'עמודה 2 – טקסט (שורות)', 'beckwealth' ), 'textarea', "Birmensdorferstrasse 123, Zürich\n+41 00 000 00 00", 'footer' ),
 		'footer_nav_title'  => array( __( 'עמודה 3 – כותרת (תפריט פוטר)', 'beckwealth' ), 'text', __( 'ניווט', 'beckwealth' ), 'footer' ),

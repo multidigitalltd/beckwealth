@@ -68,8 +68,8 @@ function beckwealth_customize_register( WP_Customize_Manager $wp_customize ): vo
 	$contact_fields = array(
 		'beckwealth_phone'    => array( __( 'טלפון (ישראל)', 'beckwealth' ), 'sanitize_text_field', '03-000-0000' ),
 		'beckwealth_whatsapp' => array( __( 'וואטסאפ (מספר)', 'beckwealth' ), 'sanitize_text_field', '' ),
-		'beckwealth_email'    => array( __( 'אימייל ליצירת קשר (מקבל פניות מהטופס)', 'beckwealth' ), 'sanitize_email', get_option( 'admin_email' ) ),
-		'beckwealth_address'  => array( __( 'כתובת (ישראל)', 'beckwealth' ), 'sanitize_text_field', '' ),
+		'beckwealth_email'    => array( __( 'אימייל ליצירת קשר (מקבל פניות מהטופס)', 'beckwealth' ), 'sanitize_email', BECKWEALTH_OFFICE_EMAIL ),
+		'beckwealth_address'  => array( __( 'כתובת (ישראל)', 'beckwealth' ), 'sanitize_text_field', BECKWEALTH_OFFICE_ADDRESS ),
 		'beckwealth_hours'    => array( __( 'שעות פעילות', 'beckwealth' ), 'sanitize_text_field', '' ),
 	);
 	foreach ( $contact_fields as $id => [ $label, $sanitize, $default ] ) {

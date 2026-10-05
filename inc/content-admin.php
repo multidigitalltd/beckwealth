@@ -124,8 +124,8 @@ function beckwealth_content_extra_fields(): array {
 
 		'beckwealth_phone'        => array( 'kind' => 'mod', 'label' => __( 'טלפון (ישראל)', 'beckwealth' ), 'type' => 'text', 'default' => '03-000-0000', 'section' => 'contact', 'ltr' => true ),
 		'beckwealth_whatsapp'     => array( 'kind' => 'mod', 'label' => __( 'וואטסאפ – מספר (למשל 0501234567 או +972501234567)', 'beckwealth' ), 'type' => 'text', 'default' => '', 'section' => 'contact', 'ltr' => true ),
-		'beckwealth_email'        => array( 'kind' => 'mod', 'label' => __( 'אימייל ליצירת קשר (מקבל את הפניות מהטופס)', 'beckwealth' ), 'type' => 'email', 'default' => get_option( 'admin_email' ), 'section' => 'contact', 'ltr' => true ),
-		'beckwealth_address'      => array( 'kind' => 'mod', 'label' => __( 'כתובת (ישראל)', 'beckwealth' ), 'type' => 'text', 'default' => '', 'section' => 'contact' ),
+		'beckwealth_email'        => array( 'kind' => 'mod', 'label' => __( 'אימייל ליצירת קשר (מקבל את הפניות מהטופס)', 'beckwealth' ), 'type' => 'email', 'default' => BECKWEALTH_OFFICE_EMAIL, 'section' => 'contact', 'ltr' => true ),
+		'beckwealth_address'      => array( 'kind' => 'mod', 'label' => __( 'כתובת (ישראל)', 'beckwealth' ), 'type' => 'text', 'default' => BECKWEALTH_OFFICE_ADDRESS, 'section' => 'contact' ),
 		'beckwealth_hours'        => array( 'kind' => 'mod', 'label' => __( 'שעות פעילות', 'beckwealth' ), 'type' => 'text', 'default' => '', 'section' => 'contact' ),
 		'beckwealth_contact_page' => array( 'kind' => 'mod', 'label' => __( 'עמוד יצירת קשר (היעד של כפתורי "תיאום שיחה")', 'beckwealth' ), 'type' => 'page', 'default' => 0, 'section' => 'contact' ),
 
