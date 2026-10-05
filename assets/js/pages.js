@@ -134,6 +134,81 @@
 				scrollTrack( e.key === 'ArrowLeft' ? -1 : 1 );
 			}
 		} );
+
+		/* גרירה: פס ההתקדמות משמש כ"סקראבר", והציר עצמו נגרר בעכבר (במגע – גלילה טבעית). */
+		const isRtl = () => 'rtl' === window.getComputedStyle( track ).direction;
+		const maxScroll = () => Math.max( 0, track.scrollWidth - track.clientWidth );
+		const setScrollPct = ( pct ) => {
+			pct = Math.max( 0, Math.min( 1, pct ) );
+			track.scrollLeft = ( isRtl() ? -1 : 1 ) * pct * maxScroll();
+		};
+		const progress = bar ? bar.parentElement : null;
+		if ( progress ) {
+			let scrubbing = false;
+			const pctFromEvent = ( e ) => {
+				const r = progress.getBoundingClientRect();
+				const x = r.width > 0 ? ( e.clientX - r.left ) / r.width : 0;
+				return isRtl() ? 1 - x : x;
+			};
+			const endScrub = () => {
+				if ( ! scrubbing ) {
+					return;
+				}
+				scrubbing = false;
+				progress.classList.remove( 'is-dragging' );
+				track.style.scrollSnapType = '';
+			};
+			progress.addEventListener( 'pointerdown', ( e ) => {
+				if ( e.button !== 0 && e.pointerType === 'mouse' ) {
+					return;
+				}
+				scrubbing = true;
+				progress.classList.add( 'is-dragging' );
+				track.style.scrollSnapType = 'none';
+				progress.setPointerCapture( e.pointerId );
+				setScrollPct( pctFromEvent( e ) );
+				e.preventDefault();
+			} );
+			progress.addEventListener( 'pointermove', ( e ) => {
+				if ( scrubbing ) {
+					setScrollPct( pctFromEvent( e ) );
+				}
+			} );
+			progress.addEventListener( 'pointerup', endScrub );
+			progress.addEventListener( 'pointercancel', endScrub );
+			progress.addEventListener( 'lostpointercapture', endScrub );
+		}
+
+		let grabbing = false;
+		let grabX = 0;
+		let grabScroll = 0;
+		track.addEventListener( 'pointerdown', ( e ) => {
+			if ( e.pointerType !== 'mouse' || e.button !== 0 ) {
+				return;
+			}
+			grabbing = true;
+			grabX = e.clientX;
+			grabScroll = track.scrollLeft;
+			track.classList.add( 'is-grabbing' );
+			track.style.scrollSnapType = 'none';
+		} );
+		window.addEventListener( 'pointermove', ( e ) => {
+			if ( grabbing ) {
+				track.scrollLeft = grabScroll - ( e.clientX - grabX );
+			}
+		} );
+		const endGrab = () => {
+			if ( ! grabbing ) {
+				return;
+			}
+			grabbing = false;
+			track.classList.remove( 'is-grabbing' );
+			track.style.scrollSnapType = '';
+		};
+		window.addEventListener( 'pointerup', endGrab );
+		window.addEventListener( 'pointercancel', endGrab );
+		window.addEventListener( 'blur', endGrab );
+
 		updateBar();
 	}
 

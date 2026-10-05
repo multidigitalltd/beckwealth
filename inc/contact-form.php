@@ -357,6 +357,44 @@ function beckwealth_newsletter_form(): void {
 }
 
 /**
+ * פופאפ "תודה" אחרי שליחה מוצלחת של טופס יצירת קשר (?contact=success) או ניוזלטר (?newsletter=success).
+ * דיאלוג מקורי (<dialog>) – נפתח ב-main.js, נסגר ב-Escape/כפתור/לחיצה על הרקע; הכתובת מנוקה מהפרמטר.
+ * ההודעה המוטמעת (form-notice) נשארת כגיבוי ללא JavaScript.
+ */
+function beckwealth_thanks_dialog(): void {
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended -- דגל תצוגה בלבד.
+	$contact = isset( $_GET['contact'] ) ? sanitize_key( wp_unslash( $_GET['contact'] ) ) : '';
+	$news    = isset( $_GET['newsletter'] ) ? sanitize_key( wp_unslash( $_GET['newsletter'] ) ) : '';
+	// phpcs:enable
+	if ( 'success' !== $contact && 'success' !== $news ) {
+		return;
+	}
+	$is_news = 'success' !== $contact;
+	$kicker  = $is_news ? (string) beckwealth_mod( 'news_title' ) : (string) beckwealth_mod( 'thanks_kicker' );
+	$title   = $is_news ? (string) beckwealth_mod( 'news_thanks_title' ) : (string) beckwealth_mod( 'thanks_title' );
+	$text    = $is_news ? (string) beckwealth_mod( 'news_thanks_text' ) : (string) beckwealth_mod( 'thanks_text' );
+	$button  = (string) beckwealth_mod( 'thanks_btn' );
+	?>
+	<dialog id="bw-thanks" class="bw-thanks" aria-labelledby="bw-thanks-title" aria-describedby="bw-thanks-text">
+		<div class="bw-thanks__box">
+			<button type="button" class="bw-thanks__x" data-thanks-close aria-label="<?php esc_attr_e( 'סגירה', 'beckwealth' ); ?>">&times;</button>
+			<span class="bw-thanks__mark" aria-hidden="true"><span class="bw-dia bw-dia--9"></span></span>
+			<?php if ( $kicker ) : ?>
+				<p class="bw-kicker bw-thanks__kicker"><?php echo esc_html( $kicker ); ?></p>
+			<?php endif; ?>
+			<h2 id="bw-thanks-title" class="bw-thanks__title"><?php echo esc_html( $title ); ?></h2>
+			<p id="bw-thanks-text" class="bw-thanks__text"><?php echo esc_html( $text ); ?></p>
+			<div class="bw-thanks__actions">
+				<button type="button" class="bw-btn bw-btn--lg" data-thanks-close autofocus><?php echo esc_html( $button ); ?><span class="bw-dia bw-dia--6 bw-dia--cur" aria-hidden="true"></span></button>
+			</div>
+			<p class="bw-thanks__brand" dir="ltr">BECK WEALTH · ZÜRICH · TEL AVIV</p>
+		</div>
+	</dialog>
+	<?php
+}
+add_action( 'wp_footer', 'beckwealth_thanks_dialog', 5 );
+
+/**
  * כתובת הפניה בטוחה (רק לדומיין של האתר).
  *
  * @return string

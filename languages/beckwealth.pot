@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Beck Wealth 1.1.0\n"
+"Project-Id-Version: Beck Wealth 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/beckwealth\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-04T11:27:17+00:00\n"
+"POT-Creation-Date: 2026-10-05T06:46:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: beckwealth\n"
@@ -66,7 +66,7 @@ msgid "התגובות סגורות."
 msgstr ""
 
 #: footer.php:44
-#: inc/admin.php:116
+#: inc/content-admin.php:84
 #: inc/customizer.php:83
 msgid "רשתות חברתיות"
 msgstr ""
@@ -84,7 +84,7 @@ msgid "פרטיות"
 msgstr ""
 
 #: footer.php:100
-#: inc/admin.php:245
+#: inc/admin.php:246
 msgid "נגישות"
 msgstr ""
 
@@ -208,13 +208,13 @@ msgid "רכז/ת נגישות:"
 msgstr ""
 
 #: inc/accessibility.php:99
-#: inc/contact-form.php:511
+#: inc/contact-form.php:549
 #: inc/leads.php:244
 msgid "טלפון:"
 msgstr ""
 
 #: inc/accessibility.php:102
-#: inc/contact-form.php:512
+#: inc/contact-form.php:550
 #: inc/leads.php:245
 msgid "אימייל:"
 msgstr ""
@@ -336,6 +336,7 @@ msgid "אנשי צוות"
 msgstr ""
 
 #: inc/admin.php:100
+#: inc/content-admin.php:507
 #: inc/post-types.php:95
 #: inc/post-types.php:103
 msgid "המלצות"
@@ -349,64 +350,83 @@ msgstr ""
 msgid "עריכה מהירה של האתר"
 msgstr ""
 
-#: inc/admin.php:114
-msgid "טקסטים ומקטעי דף הבית"
+#: inc/admin.php:113
+msgid "ניהול תוכן – כל הטקסטים, התמונות ופרטי הקשר"
 msgstr ""
 
 #: inc/admin.php:115
-msgid "פרטי קשר (טלפון, וואטסאפ, כתובת)"
+#: inc/content-admin.php:31
+#: inc/pages.php:161
+#: inc/seed.php:247
+#: inc/template-tags.php:406
+msgid "דף הבית"
 msgstr ""
 
+#: inc/admin.php:116
+msgid "לוגו, פרטי קשר (טלפון, וואטסאפ, כתובת), רשתות ופוטר"
+msgstr ""
+
+#. Template Name of the theme
 #: inc/admin.php:117
-msgid "צבעים וגופן"
+#: inc/content-admin.php:38
+#: inc/nav-fallback.php:22
+#: inc/nav-fallback.php:63
+#: inc/seed.php:131
+msgid "מי אנחנו"
 msgstr ""
 
 #: inc/admin.php:118
-msgid "פוטר והבהרה משפטית"
+msgid "עמודי המחלקות והיתרון השוויצרי"
 msgstr ""
 
 #: inc/admin.php:119
-msgid "לוגו ושם האתר"
+#: inc/pages-defaults.php:286
+msgid "עמוד יצירת קשר"
 msgstr ""
 
 #: inc/admin.php:120
+#: inc/content-admin.php:510
 msgid "תפריטים"
 msgstr ""
 
 #: inc/admin.php:121
-msgid "הגדרות: Turnstile, פרטיות, נגישות"
+msgid "עריכה עם תצוגה מקדימה חיה (קסטומייזר)"
 msgstr ""
 
-#: inc/admin.php:123
+#: inc/admin.php:122
+msgid "הגדרות: Turnstile, נגישות"
+msgstr ""
+
+#: inc/admin.php:124
 msgid "הוספת תוכן"
 msgstr ""
 
-#: inc/admin.php:125
+#: inc/admin.php:126
 msgid "+ שירות"
 msgstr ""
 
-#: inc/admin.php:126
+#: inc/admin.php:127
 msgid "+ איש צוות"
 msgstr ""
 
-#: inc/admin.php:127
+#: inc/admin.php:128
 msgid "+ המלצה"
 msgstr ""
 
-#: inc/admin.php:128
+#: inc/admin.php:129
 msgid "+ מאמר"
 msgstr ""
 
-#: inc/admin.php:133
+#: inc/admin.php:134
 msgid "לידים אחרונים"
 msgstr ""
 
-#: inc/admin.php:138
+#: inc/admin.php:139
 #: inc/leads.php:137
 msgid "שם"
 msgstr ""
 
-#: inc/admin.php:139
+#: inc/admin.php:140
 #: inc/contact-form.php:99
 #: inc/contact-form.php:100
 #: inc/contact-form.php:216
@@ -418,159 +438,188 @@ msgstr ""
 msgid "טלפון"
 msgstr ""
 
-#: inc/admin.php:140
+#: inc/admin.php:141
 #: inc/leads.php:141
 #: inc/leads.php:253
 msgid "סטטוס"
 msgstr ""
 
-#: inc/admin.php:141
+#: inc/admin.php:142
 #: inc/leads.php:143
 msgid "תאריך"
 msgstr ""
 
-#: inc/admin.php:157
+#: inc/admin.php:158
 msgid "עדיין לא התקבלו לידים. כשגולשים ישלחו את טופס יצירת הקשר – הם יופיעו כאן."
 msgstr ""
 
-#: inc/admin.php:178
+#: inc/admin.php:179
 msgid "Beck Wealth – הגדרות"
 msgstr ""
 
-#: inc/admin.php:182
+#: inc/admin.php:183
 #: inc/leads.php:32
 #: inc/leads.php:37
 #: inc/leads.php:38
 msgid "לידים"
 msgstr ""
 
-#: inc/admin.php:185
+#: inc/admin.php:186
 msgid "אימייל להתראות על ליד חדש"
 msgstr ""
 
-#: inc/admin.php:188
+#: inc/admin.php:189
 msgid "ריק = האימייל שהוגדר בפרטי הקשר בקסטומייזר (או אימייל המנהל)."
 msgstr ""
 
-#: inc/admin.php:193
+#: inc/admin.php:194
 msgid "Cloudflare Turnstile (הגנה מספאם, נגיש)"
 msgstr ""
 
-#: inc/admin.php:194
+#: inc/admin.php:195
 msgid "צרו ווידג'ט ב-Cloudflare Dashboard ‹ Turnstile והדביקו את המפתחות. ללא מפתחות – הטופס מוגן ב-Honeypot והגבלת קצב בלבד. ניתן להגדיר גם כקבועים ב-wp-config.php: BECKWEALTH_TURNSTILE_SITE_KEY / BECKWEALTH_TURNSTILE_SECRET."
 msgstr ""
 
-#: inc/admin.php:197
+#: inc/admin.php:198
 msgid "Site Key"
 msgstr ""
 
-#: inc/admin.php:200
-#: inc/admin.php:210
+#: inc/admin.php:201
+#: inc/admin.php:211
 msgid "מוגדר ב-wp-config.php"
 msgstr ""
 
-#: inc/admin.php:207
+#: inc/admin.php:208
 msgid "Secret Key"
 msgstr ""
 
-#: inc/admin.php:212
+#: inc/admin.php:213
 msgid "•••••••• (שמור)"
 msgstr ""
 
-#: inc/admin.php:214
+#: inc/admin.php:215
 msgid "מחיקת המפתח השמור"
 msgstr ""
 
-#: inc/admin.php:216
+#: inc/admin.php:217
 msgid "המפתח נשמר ואינו מוצג שוב. השאירו ריק כדי לא לשנות."
 msgstr ""
 
-#: inc/admin.php:222
+#: inc/admin.php:223
 msgid "הודעת מדיניות פרטיות"
 msgstr ""
 
-#: inc/admin.php:225
+#: inc/admin.php:226
 msgid "הצגת ההודעה"
 msgstr ""
 
-#: inc/admin.php:227
+#: inc/admin.php:228
 msgid "הצג פופאפ מדיניות פרטיות בכניסה ראשונה מדפדפן חדש"
 msgstr ""
 
 #. translators: %s: link to privacy settings
-#: inc/admin.php:232
+#: inc/admin.php:233
 #, php-format
 msgid "הקישור בהודעה מפנה לעמוד מדיניות הפרטיות שהוגדר ב%s."
 msgstr ""
 
-#: inc/admin.php:233
+#: inc/admin.php:234
 msgid "הגדרות ‹ פרטיות"
 msgstr ""
 
-#: inc/admin.php:240
+#: inc/admin.php:241
+#: inc/content-admin.php:133
 msgid "טקסט ההודעה"
 msgstr ""
 
-#: inc/admin.php:248
+#: inc/admin.php:249
 msgid "סרגל נגישות"
 msgstr ""
 
-#: inc/admin.php:249
+#: inc/admin.php:250
 msgid "הצג כפתור וסרגל נגישות באתר"
 msgstr ""
 
-#: inc/admin.php:252
+#: inc/admin.php:253
 msgid "עמוד הצהרת נגישות"
 msgstr ""
 
-#: inc/admin.php:260
+#: inc/admin.php:261
 msgid "— בחרו עמוד —"
 msgstr ""
 
-#: inc/admin.php:265
+#: inc/admin.php:266
 msgid "העמוד נוצר אוטומטית בהפעלת התבנית. יש להשלים בו את הפרטים המסומנים ולפרסם."
 msgstr ""
 
-#: inc/admin.php:269
+#: inc/admin.php:270
 msgid "רכז/ת נגישות – שם"
 msgstr ""
 
-#: inc/admin.php:273
+#: inc/admin.php:274
 msgid "רכז/ת נגישות – טלפון"
 msgstr ""
 
-#: inc/admin.php:277
+#: inc/admin.php:278
 msgid "רכז/ת נגישות – אימייל"
 msgstr ""
 
-#: inc/admin.php:282
+#: inc/admin.php:283
 msgid "שמירת הגדרות"
 msgstr ""
 
 #. translators: %s: agency link
-#: inc/admin.php:321
+#: inc/admin.php:323
 #, php-format
 msgid "עיצוב ופיתוח: %s"
 msgstr ""
 
-#: inc/admin.php:336
+#: inc/admin.php:338
 msgid "Beck Wealth – סקירה מהירה"
 msgstr ""
 
-#: inc/admin.php:339
+#: inc/admin.php:341
 msgid "לידים חדשים ממתינים לטיפול."
 msgstr ""
 
-#: inc/admin.php:340
+#: inc/admin.php:342
 msgid "לטיפול בלידים"
 msgstr ""
 
-#: inc/admin.php:341
+#: inc/admin.php:343
 msgid "לדשבורד Beck Wealth"
 msgstr ""
 
-#: inc/admin.php:356
+#: inc/admin.php:358
 msgid "תמונה"
+msgstr ""
+
+#: inc/blog.php:75
+msgid "סוג הכתבה"
+msgstr ""
+
+#: inc/blog.php:88
+msgid "מאמר פנימי – השאירו ריק. כתבה באתר אחר – הדביקו את הכתובת המלאה; הכרטיס בבלוג ייראה זהה, והלחיצה תוביל לכתבה החיצונית."
+msgstr ""
+
+#: inc/blog.php:90
+msgid "קישור לכתבה חיצונית"
+msgstr ""
+
+#: inc/blog.php:93
+msgid "טיפ: גם לכתבה חיצונית כדאי להוסיף תמונה ראשית, קטגוריה ותקציר קצר – הם מוצגים בכרטיס."
+msgstr ""
+
+#: inc/blog.php:159
+msgid "סוג"
+msgstr ""
+
+#: inc/blog.php:178
+msgid "מאמר פנימי"
+msgstr ""
+
+#: inc/blog.php:184
+msgid "כתבה חיצונית"
 msgstr ""
 
 #: inc/contact-form.php:27
@@ -656,64 +705,439 @@ msgstr ""
 msgid "הרשמה"
 msgstr ""
 
-#: inc/contact-form.php:508
+#: inc/contact-form.php:380
+msgid "סגירה"
+msgstr ""
+
+#: inc/contact-form.php:546
 msgid "התקבלה פנייה חדשה מאתר"
 msgstr ""
 
-#: inc/contact-form.php:510
+#: inc/contact-form.php:548
 msgid "שם:"
 msgstr ""
 
-#: inc/contact-form.php:513
+#: inc/contact-form.php:551
 #: inc/leads.php:247
 msgid "היקף הון:"
 msgstr ""
 
-#: inc/contact-form.php:514
+#: inc/contact-form.php:552
 #: inc/leads.php:246
 msgid "נושא:"
 msgstr ""
 
-#: inc/contact-form.php:515
+#: inc/contact-form.php:553
 #: inc/leads.php:248
 msgid "ניוזלטר:"
 msgstr ""
 
-#: inc/contact-form.php:515
+#: inc/contact-form.php:553
 #: inc/leads.php:248
 msgid "כן"
 msgstr ""
 
-#: inc/contact-form.php:515
+#: inc/contact-form.php:553
 #: inc/leads.php:248
 msgid "לא"
 msgstr ""
 
-#: inc/contact-form.php:519
+#: inc/contact-form.php:557
 msgid "הודעה:"
 msgstr ""
 
-#: inc/contact-form.php:524
+#: inc/contact-form.php:562
 msgid "עמוד:"
 msgstr ""
 
-#: inc/contact-form.php:525
+#: inc/contact-form.php:563
 msgid "תאריך:"
 msgstr ""
 
-#: inc/contact-form.php:526
+#: inc/contact-form.php:564
 msgid "לניהול הלידים:"
 msgstr ""
 
 #. translators: 1: site name, 2: sender name
-#: inc/contact-form.php:534
+#: inc/contact-form.php:572
 #, php-format
 msgid "[%1$s] פנייה חדשה מ-%2$s"
 msgstr ""
 
-#: inc/contact-form.php:577
+#: inc/contact-form.php:615
 #: inc/home-defaults.php:140
 msgid "הרשמה לניוזלטר"
+msgstr ""
+
+#: inc/content-admin.php:24
+msgid "כללי ופרטי קשר"
+msgstr ""
+
+#: inc/content-admin.php:28
+msgid "הלוגו, שם האתר, טלפון ווואטסאפ, רשתות, שורת \"מהשוק\", הפוטר והודעת הפרטיות – כל מה שמופיע בכל העמודים."
+msgstr ""
+
+#: inc/content-admin.php:35
+msgid "המקטעים לפי הסדר שבו הם מופיעים בעמוד, מלמעלה למטה."
+msgstr ""
+
+#: inc/content-admin.php:42
+msgid "הירו, ציר הזמן של שלושת הדורות, ארבעת פרקי הסיפור ומבנה הקבוצה."
+msgstr ""
+
+#. Template Name of the theme
+#: inc/content-admin.php:45
+#: inc/home-defaults.php:74
+#: inc/nav-fallback.php:23
+#: inc/pages-defaults.php:112
+#: inc/pages-defaults.php:282
+#: inc/seed.php:132
+msgid "היתרון השוויצרי"
+msgstr ""
+
+#: inc/content-admin.php:52
+#: inc/content-admin.php:505
+#: inc/nav-fallback.php:64
+#: template-parts/service/family-wealth.php:19
+#: template-parts/service/investments-tax.php:20
+#: template-parts/service/trust.php:21
+msgid "מחלקות"
+msgstr ""
+
+#: inc/content-admin.php:56
+msgid "שלושת עמודי המחלקות המעוצבים. שם המחלקה, התיאור הקצר והנקודות בכרטיס בדף הבית נערכים בתפריט \"מחלקות\"."
+msgstr ""
+
+#. Template Name of the theme
+#: inc/content-admin.php:59
+#: inc/home-defaults.php:150
+#: inc/nav-fallback.php:29
+#: inc/nav-fallback.php:67
+#: inc/pages-defaults.php:38
+#: inc/pages-defaults.php:242
+#: inc/seed.php:259
+msgid "יצירת קשר"
+msgstr ""
+
+#: inc/content-admin.php:63
+msgid "עמוד יצירת הקשר: שתי הערים, מכתב הפנייה והערוצים הישירים. הטלפון, הכתובת והאימייל עצמם – בלשונית \"כללי ופרטי קשר\"."
+msgstr ""
+
+#: inc/content-admin.php:66
+msgid "בלוג, צוות ועוד"
+msgstr ""
+
+#: inc/content-admin.php:82
+msgid "זהות האתר – לוגו ושם"
+msgstr ""
+
+#: inc/content-admin.php:83
+msgid "פרטי קשר – טלפון, וואטסאפ, אימייל, כתובת"
+msgstr ""
+
+#: inc/content-admin.php:85
+msgid "הודעת פרטיות ואימייל לידים"
+msgstr ""
+
+#: inc/content-admin.php:96
+msgid "הלוגו מוצג בכותרת ובפוטר (PNG/SVG שקוף, רוחב 900px ומעלה). אייקון האתר מופיע בלשונית הדפדפן (ריבוע, 512×512)."
+msgstr ""
+
+#: inc/content-admin.php:97
+msgid "הפרטים האלה מוצגים בכותרת, בפוטר, בכפתור הוואטסאפ הצף ובעמוד יצירת הקשר. האימייל מקבל את הפניות מהטופס."
+msgstr ""
+
+#: inc/content-admin.php:98
+msgid "ההודעה מוצגת פעם אחת לכל גולש. הקישור למדיניות הפרטיות נלקח מ\"הגדרות ‹ פרטיות\"."
+msgstr ""
+
+#: inc/content-admin.php:99
+msgid "מתגים כלליים. כיבוי \"אנימציות\" מבטל את כל התנועה באתר (למשל לבדיקות נגישות)."
+msgstr ""
+
+#: inc/content-admin.php:100
+msgid "שורת \"מהשוק\" רצה מתחת לתפריט. ריק = השורה לא מוצגת."
+msgstr ""
+
+#: inc/content-admin.php:101
+msgid "המסך הראשון בדף הבית. טקסט בין ** מודגש בזהב."
+msgstr ""
+
+#: inc/content-admin.php:102
+msgid "אנשי הצוות עצמם (שם, תפקיד, תמונה) נערכים בתפריט \"צוות\"."
+msgstr ""
+
+#: inc/content-admin.php:103
+msgid "השאלות והתשובות עצמן נערכות בתפריט \"שאלות ותשובות\"."
+msgstr ""
+
+#: inc/content-admin.php:104
+msgid "הכתבות עצמן נערכות בתפריט \"פוסטים\". כתבה חיצונית = פוסט עם \"קישור לכתבה חיצונית\"."
+msgstr ""
+
+#: inc/content-admin.php:105
+msgid "שם המחלקה, התיאור והנקודות בכרטיסים נערכים בתפריט \"מחלקות\"."
+msgstr ""
+
+#: inc/content-admin.php:106
+msgid "הטופס בתחתית דף הבית והפופאפ שמוצג אחרי שליחה מוצלחת."
+msgstr ""
+
+#: inc/content-admin.php:107
+msgid "ציר הזמן: שורת דור מתחילה ב-# (למשל \"# I\"), ואחריה שורות של שנה + טקסט."
+msgstr ""
+
+#: inc/content-admin.php:108
+msgid "ארבעה פרקים. כל שורה בטקסט = פסקה נפרדת."
+msgstr ""
+
+#: inc/content-admin.php:120
+msgid "לוגו"
+msgstr ""
+
+#: inc/content-admin.php:121
+msgid "אייקון האתר (favicon)"
+msgstr ""
+
+#: inc/content-admin.php:122
+msgid "שם האתר"
+msgstr ""
+
+#: inc/content-admin.php:123
+msgid "תיאור קצר (מוצג בכותרת הלשונית)"
+msgstr ""
+
+#: inc/content-admin.php:125
+#: inc/customizer.php:69
+msgid "טלפון (ישראל)"
+msgstr ""
+
+#: inc/content-admin.php:126
+msgid "וואטסאפ – מספר (למשל 0501234567 או +972501234567)"
+msgstr ""
+
+#: inc/content-admin.php:127
+msgid "אימייל ליצירת קשר (מקבל את הפניות מהטופס)"
+msgstr ""
+
+#: inc/content-admin.php:128
+#: inc/customizer.php:72
+msgid "כתובת (ישראל)"
+msgstr ""
+
+#: inc/content-admin.php:129
+#: inc/customizer.php:73
+msgid "שעות פעילות"
+msgstr ""
+
+#: inc/content-admin.php:130
+msgid "עמוד יצירת קשר (היעד של כפתורי \"תיאום שיחה\")"
+msgstr ""
+
+#: inc/content-admin.php:132
+msgid "הצגת הודעת פרטיות בכניסה לאתר"
+msgstr ""
+
+#: inc/content-admin.php:134
+msgid "אימייל להתראה על ליד חדש (ריק = האימייל מפרטי הקשר)"
+msgstr ""
+
+#: inc/content-admin.php:190
+msgid "שנה (או \"# I\" לפתיחת דור)"
+msgstr ""
+
+#: inc/content-admin.php:190
+msgid "טקסט האירוע (או כותרת הדור)"
+msgstr ""
+
+#: inc/content-admin.php:190
+msgid "שם (רק בשורת דור)"
+msgstr ""
+
+#: inc/content-admin.php:210
+msgid "פריט"
+msgstr ""
+
+#. translators: %d: column number
+#: inc/content-admin.php:214
+#, php-format
+msgid "חלק %d"
+msgstr ""
+
+#: inc/content-admin.php:225
+#: inc/content-admin.php:283
+msgid "ניהול תוכן"
+msgstr ""
+
+#: inc/content-admin.php:245
+#: inc/content-admin.php:389
+msgid "בחירת תמונה"
+msgstr ""
+
+#: inc/content-admin.php:246
+msgid "שימוש בתמונה זו"
+msgstr ""
+
+#: inc/content-admin.php:247
+#: inc/content-admin.php:390
+msgid "הסרה"
+msgstr ""
+
+#: inc/content-admin.php:248
+msgid "יש שינויים שלא נשמרו."
+msgstr ""
+
+#: inc/content-admin.php:249
+msgid "לא נמצאו שדות מתאימים בלשונית הזו. נסו לשונית אחרת."
+msgstr ""
+
+#: inc/content-admin.php:250
+#: inc/content-admin.php:452
+#: inc/content-admin.php:473
+msgid "העברה למעלה"
+msgstr ""
+
+#: inc/content-admin.php:251
+#: inc/content-admin.php:453
+#: inc/content-admin.php:474
+msgid "העברה למטה"
+msgstr ""
+
+#: inc/content-admin.php:252
+#: inc/content-admin.php:454
+#: inc/content-admin.php:475
+msgid "מחיקת שורה"
+msgstr ""
+
+#: inc/content-admin.php:284
+msgid "כל הטקסטים, התמונות ופרטי הקשר של האתר במקום אחד. עורכים, לוחצים \"שמירה\" – והאתר מתעדכן מיד."
+msgstr ""
+
+#: inc/content-admin.php:288
+msgid "חיפוש שדה (למשל: טלפון, כותרת, תמונה)"
+msgstr ""
+
+#: inc/content-admin.php:293
+msgid "השינויים נשמרו. האתר מעודכן."
+msgstr ""
+
+#: inc/content-admin.php:293
+msgid "לצפייה בעמוד ↗"
+msgstr ""
+
+#: inc/content-admin.php:296
+msgid "עמודי האתר"
+msgstr ""
+
+#: inc/content-admin.php:315
+msgid "צפייה בעמוד באתר"
+msgstr ""
+
+#: inc/content-admin.php:347
+msgid "שמירת השינויים"
+msgstr ""
+
+#: inc/content-admin.php:389
+msgid "החלפת תמונה"
+msgstr ""
+
+#: inc/content-admin.php:401
+msgid "— ללא (עוגן לטופס בדף הבית) —"
+msgstr ""
+
+#: inc/content-admin.php:435
+msgid "פעולות"
+msgstr ""
+
+#: inc/content-admin.php:479
+msgid "הוספת שורה"
+msgstr ""
+
+#: inc/content-admin.php:484
+msgid "כל שורה (Enter) = פסקה חדשה באתר."
+msgstr ""
+
+#: inc/content-admin.php:504
+msgid "כתבות בבלוג"
+msgstr ""
+
+#: inc/content-admin.php:504
+msgid "מאמרים פנימיים, וגם כתבות באתרים אחרים: בעריכת פוסט מלאו \"קישור לכתבה חיצונית\" – הכרטיס ייראה זהה והלחיצה תוביל החוצה."
+msgstr ""
+
+#: inc/content-admin.php:505
+msgid "שם המחלקה, תיאור קצר ונקודות בכרטיס. הטקסטים של עמודי המחלקות המעוצבים – בלשונית \"מחלקות\"."
+msgstr ""
+
+#: inc/content-admin.php:506
+#: inc/nav-fallback.php:66
+#: inc/post-types.php:66
+#: inc/post-types.php:75
+msgid "צוות"
+msgstr ""
+
+#: inc/content-admin.php:506
+msgid "אנשי הצוות המוצגים בדף הבית: שם, תפקיד, תמונה, פרטי קשר."
+msgstr ""
+
+#: inc/content-admin.php:507
+msgid "ציטוטי לקוחות בדף הבית."
+msgstr ""
+
+#: inc/content-admin.php:508
+#: inc/home-defaults.php:147
+#: inc/pages-defaults.php:44
+#: inc/post-types.php:122
+#: inc/post-types.php:130
+msgid "שאלות ותשובות"
+msgstr ""
+
+#: inc/content-admin.php:508
+msgid "השאלות באקורדיון בדף הבית ובעמודי המחלקות."
+msgstr ""
+
+#: inc/content-admin.php:509
+msgid "לידים (פניות מהטופס)"
+msgstr ""
+
+#: inc/content-admin.php:509
+msgid "כל הפניות שהתקבלו, עם סטטוס, הערות וייצוא."
+msgstr ""
+
+#: inc/content-admin.php:510
+msgid "התפריט הראשי, תפריט הפוטר והתפריט המשפטי."
+msgstr ""
+
+#: inc/content-admin.php:511
+msgid "עמודים"
+msgstr ""
+
+#: inc/content-admin.php:511
+msgid "מדיניות פרטיות, הצהרת נגישות ועמודים נוספים."
+msgstr ""
+
+#: inc/content-admin.php:512
+msgid "הגדרות מתקדמות"
+msgstr ""
+
+#: inc/content-admin.php:512
+msgid "Cloudflare Turnstile, רכז/ת נגישות, עמוד הצהרת הנגישות."
+msgstr ""
+
+#: inc/content-admin.php:522
+msgid "ניהול"
+msgstr ""
+
+#: inc/content-admin.php:524
+msgid "+ הוספה"
+msgstr ""
+
+#: inc/content-admin.php:538
+msgid "אין הרשאה."
+msgstr ""
+
+#: inc/content-admin.php:543
+msgid "הטופס פג תוקף. חזרו אחורה ונסו שוב."
 msgstr ""
 
 #: inc/customizer.php:59
@@ -728,24 +1152,12 @@ msgstr ""
 msgid "פרטי קשר"
 msgstr ""
 
-#: inc/customizer.php:69
-msgid "טלפון (ישראל)"
-msgstr ""
-
 #: inc/customizer.php:70
 msgid "וואטסאפ (מספר)"
 msgstr ""
 
 #: inc/customizer.php:71
 msgid "אימייל ליצירת קשר (מקבל פניות מהטופס)"
-msgstr ""
-
-#: inc/customizer.php:72
-msgid "כתובת (ישראל)"
-msgstr ""
-
-#: inc/customizer.php:73
-msgid "שעות פעילות"
 msgstr ""
 
 #: inc/customizer.php:80
@@ -841,8 +1253,8 @@ msgstr ""
 #: inc/home-defaults.php:118
 #: inc/home-defaults.php:130
 #: inc/home-defaults.php:137
-#: inc/home-defaults.php:144
-#: inc/home-defaults.php:148
+#: inc/home-defaults.php:146
+#: inc/home-defaults.php:150
 #: inc/pages-defaults.php:54
 #: inc/pages-defaults.php:112
 #: inc/pages-defaults.php:209
@@ -873,7 +1285,7 @@ msgstr ""
 #: inc/home-defaults.php:41
 #: inc/home-defaults.php:64
 #: inc/home-defaults.php:112
-#: inc/home-defaults.php:150
+#: inc/home-defaults.php:152
 #: inc/pages-defaults.php:244
 msgid "טקסט"
 msgstr ""
@@ -990,8 +1402,8 @@ msgstr ""
 #: inc/home-defaults.php:119
 #: inc/home-defaults.php:131
 #: inc/home-defaults.php:138
-#: inc/home-defaults.php:145
-#: inc/home-defaults.php:149
+#: inc/home-defaults.php:147
+#: inc/home-defaults.php:151
 #: inc/pages-defaults.php:171
 #: inc/pages-defaults.php:210
 msgid "כותרת"
@@ -1037,15 +1449,6 @@ msgstr ""
 
 #: inc/home-defaults.php:74
 msgid "עמודה שוויץ – כותרת"
-msgstr ""
-
-#. Template Name of the theme
-#: inc/home-defaults.php:74
-#: inc/nav-fallback.php:23
-#: inc/pages-defaults.php:112
-#: inc/pages-defaults.php:282
-#: inc/seed.php:132
-msgid "היתרון השוויצרי"
 msgstr ""
 
 #: inc/home-defaults.php:75
@@ -1344,204 +1747,235 @@ msgstr ""
 msgid "אחת לחודש, בלי ספאם. הסרה בכל רגע."
 msgstr ""
 
-#: inc/home-defaults.php:144
+#: inc/home-defaults.php:142
+msgid "ניוזלטר – פופאפ \"תודה\" – כותרת"
+msgstr ""
+
+#: inc/home-defaults.php:142
+msgid "נרשמתם בהצלחה"
+msgstr ""
+
+#: inc/home-defaults.php:143
+msgid "ניוזלטר – פופאפ \"תודה\" – טקסט"
+msgstr ""
+
+#: inc/home-defaults.php:143
+msgid "תודה שהצטרפתם. הניוזלטר של Beck Wealth יוצא אחת לחודש, עם תובנות על ניהול הון, מיסוי והעברה בין־דורית. אפשר להסיר את ההרשמה בכל רגע."
+msgstr ""
+
+#: inc/home-defaults.php:146
 #: inc/pages-defaults.php:43
 #: patterns/faq.php:17
 msgid "שאלות נפוצות"
 msgstr ""
 
-#: inc/home-defaults.php:145
-#: inc/pages-defaults.php:44
-#: inc/post-types.php:122
-#: inc/post-types.php:130
-msgid "שאלות ותשובות"
-msgstr ""
-
-#. Template Name of the theme
-#: inc/home-defaults.php:148
-#: inc/nav-fallback.php:29
-#: inc/nav-fallback.php:67
-#: inc/pages-defaults.php:38
-#: inc/pages-defaults.php:242
-#: inc/seed.php:259
-msgid "יצירת קשר"
-msgstr ""
-
-#: inc/home-defaults.php:149
+#: inc/home-defaults.php:151
 msgid "השיחה הראשונה לא עולה כלום, ושווה הרבה."
 msgstr ""
 
-#: inc/home-defaults.php:150
+#: inc/home-defaults.php:152
 #: inc/pages-defaults.php:244
 msgid "ממלאים את הטופס, ואנחנו חוזרים אליכם בתוך יום עסקים לתיאום שיחת היכרות חסויה."
 msgstr ""
 
-#: inc/home-defaults.php:151
+#: inc/home-defaults.php:153
 msgid "תמונה (16:10)"
 msgstr ""
 
-#: inc/home-defaults.php:152
+#: inc/home-defaults.php:154
 msgid "אפשרויות \"היקף הון\" (שורה לכל אפשרות)"
 msgstr ""
 
-#: inc/home-defaults.php:153
+#: inc/home-defaults.php:155
 msgid "נושאי פנייה נוספים (מעבר לשירותים; שורה לכל נושא)"
 msgstr ""
 
-#: inc/home-defaults.php:154
+#: inc/home-defaults.php:156
 msgid "תיבת ניוזלטר – טקסט"
 msgstr ""
 
-#: inc/home-defaults.php:154
+#: inc/home-defaults.php:156
 msgid "אשמח לקבל מכם ניוזלטר חודשי (לא חובה)"
 msgstr ""
 
-#: inc/home-defaults.php:155
+#: inc/home-defaults.php:157
 msgid "כפתור שליחה – טקסט"
 msgstr ""
 
-#: inc/home-defaults.php:155
+#: inc/home-defaults.php:157
 #: inc/pages-defaults.php:39
 msgid "שליחה"
 msgstr ""
 
-#: inc/home-defaults.php:156
+#: inc/home-defaults.php:158
 msgid "כפתור וואטסאפ – טקסט"
 msgstr ""
 
-#: inc/home-defaults.php:156
+#: inc/home-defaults.php:158
 msgid "וואטסאפ · מענה מיידי"
 msgstr ""
 
-#: inc/home-defaults.php:157
+#: inc/home-defaults.php:159
 msgid "הודעת וואטסאפ מוכנה מראש"
 msgstr ""
 
-#: inc/home-defaults.php:157
+#: inc/home-defaults.php:159
 msgid "שלום, אשמח לתאם שיחת היכרות"
 msgstr ""
 
 #: inc/home-defaults.php:160
-msgid "שורת ערים"
+msgid "פופאפ \"תודה\" אחרי שליחה – שורה עליונה"
 msgstr ""
 
 #: inc/home-defaults.php:160
-msgid "ציריך · תל אביב"
+msgid "הפנייה התקבלה"
 msgstr ""
 
 #: inc/home-defaults.php:161
-msgid "עמודה 1 – כותרת"
+msgid "פופאפ \"תודה\" – כותרת"
 msgstr ""
 
 #: inc/home-defaults.php:161
-msgid "משרד ישראל"
+msgid "תודה שיצרתם קשר"
 msgstr ""
 
 #: inc/home-defaults.php:162
-msgid "עמודה 1 – טקסט (שורות)"
+msgid "פופאפ \"תודה\" – טקסט"
+msgstr ""
+
+#: inc/home-defaults.php:162
+msgid "פנייתכם הגיעה אלינו בהצלחה. אחד מאנשי הצוות שלנו יחזור אליכם בהקדם, בדרך כלל בתוך יום עסקים אחד, לתיאום שיחת היכרות חסויה."
 msgstr ""
 
 #: inc/home-defaults.php:163
-msgid "עמודה 2 – כותרת"
+msgid "פופאפ \"תודה\" – כפתור"
 msgstr ""
 
 #: inc/home-defaults.php:163
-msgid "משרד ציריך"
-msgstr ""
-
-#: inc/home-defaults.php:164
-msgid "עמודה 2 – טקסט (שורות)"
-msgstr ""
-
-#: inc/home-defaults.php:165
-msgid "עמודה 3 – כותרת (תפריט פוטר)"
-msgstr ""
-
-#: inc/home-defaults.php:165
-msgid "ניווט"
+msgid "חזרה לאתר"
 msgstr ""
 
 #: inc/home-defaults.php:166
-msgid "עמודה 4 – כותרת (תפריט משפטי)"
+msgid "שורת ערים"
 msgstr ""
 
 #: inc/home-defaults.php:166
-msgid "משפטי"
+msgid "ציריך · תל אביב"
 msgstr ""
 
 #: inc/home-defaults.php:167
-msgid "הבהרה משפטית"
+msgid "עמודה 1 – כותרת"
 msgstr ""
 
 #: inc/home-defaults.php:167
-msgid "בק וולת׳ (ישראל) בע״מ פועלת בשיתוף BeckWealth AG, ציריך, המפוקחת על ידי הרגולטור השוויצרי (FINMA). הנכסים מוחזקים בחשבונות על שם הלקוח בבנקים שוויצריים. אין באמור באתר זה משום ייעוץ השקעות, ייעוץ מס או שיווק השקעות כהגדרתם בחוק, ואין בו תחליף לייעוץ אישי המותאם לצרכיו של כל אדם. נוסח סופי באישור עו״ד."
+msgid "משרד ישראל"
 msgstr ""
 
 #: inc/home-defaults.php:168
+msgid "עמודה 1 – טקסט (שורות)"
+msgstr ""
+
+#: inc/home-defaults.php:169
+msgid "עמודה 2 – כותרת"
+msgstr ""
+
+#: inc/home-defaults.php:169
+msgid "משרד ציריך"
+msgstr ""
+
+#: inc/home-defaults.php:170
+msgid "עמודה 2 – טקסט (שורות)"
+msgstr ""
+
+#: inc/home-defaults.php:171
+msgid "עמודה 3 – כותרת (תפריט פוטר)"
+msgstr ""
+
+#: inc/home-defaults.php:171
+msgid "ניווט"
+msgstr ""
+
+#: inc/home-defaults.php:172
+msgid "עמודה 4 – כותרת (תפריט משפטי)"
+msgstr ""
+
+#: inc/home-defaults.php:172
+msgid "משפטי"
+msgstr ""
+
+#: inc/home-defaults.php:173
+msgid "הבהרה משפטית"
+msgstr ""
+
+#: inc/home-defaults.php:173
+msgid "בק וולת׳ (ישראל) בע״מ פועלת בשיתוף BeckWealth AG, ציריך, המפוקחת על ידי הרגולטור השוויצרי (FINMA). הנכסים מוחזקים בחשבונות על שם הלקוח בבנקים שוויצריים. אין באמור באתר זה משום ייעוץ השקעות, ייעוץ מס או שיווק השקעות כהגדרתם בחוק, ואין בו תחליף לייעוץ אישי המותאם לצרכיו של כל אדם. נוסח סופי באישור עו״ד."
+msgstr ""
+
+#: inc/home-defaults.php:174
 msgid "לוגו ענק שקוף בתחתית"
 msgstr ""
 
-#: inc/home-defaults.php:181
+#: inc/home-defaults.php:187
 msgid "התנהגות ואנימציות"
 msgstr ""
 
-#: inc/home-defaults.php:182
+#: inc/home-defaults.php:188
 msgid "כותרת עליונה ושורת \"מהשוק\""
 msgstr ""
 
-#: inc/home-defaults.php:183
+#: inc/home-defaults.php:189
 msgid "דף הבית – הירו"
 msgstr ""
 
-#: inc/home-defaults.php:184
+#: inc/home-defaults.php:190
 msgid "דף הבית – שורת אמון ומספרים"
 msgstr ""
 
-#: inc/home-defaults.php:185
+#: inc/home-defaults.php:191
 msgid "דף הבית – שוויץ"
 msgstr ""
 
-#: inc/home-defaults.php:186
+#: inc/home-defaults.php:192
 msgid "דף הבית – היתרון"
 msgstr ""
 
-#: inc/home-defaults.php:187
+#: inc/home-defaults.php:193
 msgid "דף הבית – מחלקות"
 msgstr ""
 
-#: inc/home-defaults.php:188
+#: inc/home-defaults.php:194
 msgid "דף הבית – שני המשרדים"
 msgstr ""
 
-#: inc/home-defaults.php:189
+#: inc/home-defaults.php:195
 msgid "דף הבית – ציטוט"
 msgstr ""
 
-#: inc/home-defaults.php:190
+#: inc/home-defaults.php:196
 msgid "דף הבית – העברה בין-דורית"
 msgstr ""
 
-#: inc/home-defaults.php:191
+#: inc/home-defaults.php:197
 msgid "דף הבית – איך זה עובד"
 msgstr ""
 
-#: inc/home-defaults.php:192
+#: inc/home-defaults.php:198
 msgid "דף הבית – צוות"
 msgstr ""
 
-#: inc/home-defaults.php:193
+#: inc/home-defaults.php:199
 msgid "דף הבית – בלוג וניוזלטר"
 msgstr ""
 
-#: inc/home-defaults.php:194
+#: inc/home-defaults.php:200
 msgid "דף הבית – שאלות ותשובות"
 msgstr ""
 
-#: inc/home-defaults.php:195
+#: inc/home-defaults.php:201
 msgid "דף הבית – יצירת קשר"
 msgstr ""
 
-#: inc/home-defaults.php:196
+#: inc/home-defaults.php:202
 msgid "פוטר"
 msgstr ""
 
@@ -1617,29 +2051,9 @@ msgstr ""
 msgid "אין לך הרשאה לבצע פעולה זו."
 msgstr ""
 
-#. Template Name of the theme
-#: inc/nav-fallback.php:22
-#: inc/nav-fallback.php:63
-#: inc/seed.php:131
-msgid "מי אנחנו"
-msgstr ""
-
 #: inc/nav-fallback.php:28
 #: inc/nav-fallback.php:65
 msgid "פרסומים"
-msgstr ""
-
-#: inc/nav-fallback.php:64
-#: template-parts/service/family-wealth.php:19
-#: template-parts/service/investments-tax.php:20
-#: template-parts/service/trust.php:21
-msgid "מחלקות"
-msgstr ""
-
-#: inc/nav-fallback.php:66
-#: inc/post-types.php:66
-#: inc/post-types.php:75
-msgid "צוות"
 msgstr ""
 
 #: inc/pages-defaults.php:28
@@ -2804,20 +3218,10 @@ msgstr ""
 msgid "מחלקה – נאמנות"
 msgstr ""
 
-#: inc/pages-defaults.php:286
-msgid "עמוד יצירת קשר"
-msgstr ""
-
 #: inc/pages.php:160
 #: inc/template-tags.php:397
 #: inc/template-tags.php:433
 msgid "פירורי לחם"
-msgstr ""
-
-#: inc/pages.php:161
-#: inc/seed.php:247
-#: inc/template-tags.php:406
-msgid "דף הבית"
 msgstr ""
 
 #: inc/pages.php:321

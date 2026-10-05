@@ -112,6 +112,45 @@
 		}
 	}
 
+	/* ---------- פופאפ "תודה" אחרי שליחת טופס (dialog מקורי) ---------- */
+	const thanks = document.getElementById( 'bw-thanks' );
+	if ( thanks ) {
+		const root = document.documentElement;
+		const closeThanks = () => {
+			if ( typeof thanks.close === 'function' && thanks.open ) {
+				thanks.close();
+			} else {
+				thanks.removeAttribute( 'open' );
+				root.classList.remove( 'bw-modal-open' );
+			}
+		};
+		thanks.querySelectorAll( '[data-thanks-close]' ).forEach( ( b ) => b.addEventListener( 'click', closeThanks ) );
+		thanks.addEventListener( 'click', ( e ) => {
+			if ( e.target === thanks ) {
+				closeThanks();
+			}
+		} );
+		thanks.addEventListener( 'close', () => root.classList.remove( 'bw-modal-open' ) );
+		// ההודעה המוטמעת בטופס מיותרת כשהפופאפ מוצג.
+		document.querySelectorAll( '.form-notice[role="status"]' ).forEach( ( n ) => { n.hidden = true; } );
+		// ניקוי הכתובת כדי שרענון לא יפתח את הפופאפ שוב.
+		try {
+			const url = new URL( window.location.href );
+			url.searchParams.delete( 'contact' );
+			url.searchParams.delete( 'newsletter' );
+			url.hash = '';
+			window.history.replaceState( null, '', url.toString() );
+		} catch ( err ) { /* דפדפן ישן */ }
+		window.setTimeout( () => {
+			root.classList.add( 'bw-modal-open' );
+			if ( typeof thanks.showModal === 'function' ) {
+				thanks.showModal();
+			} else {
+				thanks.setAttribute( 'open', '' );
+			}
+		}, 350 );
+	}
+
 	/* ---------- נגישות: החלת העדפות שמורות + טעינה עצלה של הסרגל ---------- */
 	const A11Y_KEY = 'bw_a11y';
 	const a11yClasses = [ 'contrast', 'invert', 'grayscale', 'underline', 'readable', 'no-motion', 'headings', 'links', 'keyboard' ];

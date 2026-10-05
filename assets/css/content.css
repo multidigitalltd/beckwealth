@@ -6,8 +6,8 @@
 .page-header { border-bottom: 1px solid var(--bw-line-4); background: var(--bw-alt); }
 .page-header__inner { max-width: 1240px; margin: 0 auto; padding: 64px 36px 52px; display: flex; flex-direction: column; gap: 18px; }
 .page-title { font: 500 44px/1.22 var(--bw-font-index); color: var(--bw-ink-dark); }
-.page-subtitle { font: 300 19px/1.65 var(--bw-font); color: var(--bw-body); max-width: 720px; }
-.archive-description { font: 300 17px/1.7 var(--bw-font); color: var(--bw-body); max-width: 720px; }
+.page-subtitle { font: 300 21px/1.65 var(--bw-font); color: var(--bw-body); max-width: 720px; }
+.archive-description { font: 300 19px/1.7 var(--bw-font); color: var(--bw-body); max-width: 720px; }
 
 .breadcrumbs { font: 400 13px/1 var(--bw-font); letter-spacing: .06em; color: var(--bw-muted); }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -20,9 +20,9 @@
 .text-center { text-align: center; }
 
 /* ---------- תוכן ---------- */
-.entry-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 400 13.5px/1 var(--bw-font); color: var(--bw-muted-2); }
+.entry-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 400 14.5px/1 var(--bw-font); color: var(--bw-muted-2); }
 .entry-meta a { color: var(--bw-gold-text); }
-.entry-content { font: 400 17.5px/1.75 var(--bw-font); color: var(--bw-ink); }
+.entry-content { font: 400 19.5px/1.75 var(--bw-font); color: var(--bw-ink); }
 .entry-content > * + * { margin-top: 1.3em; }
 .entry-content h2, .entry-content h3, .entry-content h4 { font-family: var(--bw-font-index); font-weight: 500; color: var(--bw-ink-dark); margin-top: 2em; }
 .entry-content h2 { font-size: 30px; line-height: 1.3; }
@@ -38,8 +38,8 @@
 .entry-content blockquote { margin: 2em 0; padding: 4px 26px; border-inline-start: 2px solid var(--bw-gold); font: 300 22px/1.6 var(--bw-font); color: #3d362c; }
 .entry-content img { display: block; }
 .entry-content figure { margin: 0; }
-.entry-content figcaption { font: 400 13px/1.5 var(--bw-font); color: var(--bw-muted); margin-top: 8px; }
-.entry-content table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.entry-content figcaption { font: 400 14.5px/1.5 var(--bw-font); color: var(--bw-muted); margin-top: 8px; }
+.entry-content table { width: 100%; border-collapse: collapse; font-size: 17px; }
 .entry-content th, .entry-content td { padding: 12px 14px; border-bottom: 1px solid var(--bw-line-2); text-align: start; }
 .entry-content th { font: 500 13px/1 var(--bw-font); letter-spacing: .08em; color: var(--bw-gold-deep); border-bottom: 1px solid var(--bw-ink-dark); }
 .entry-content .wp-block-button__link { border-radius: 0; background: var(--bw-ink-dark); color: var(--bw-cream); border: 0; font: 500 15px/1 var(--bw-font); letter-spacing: .04em; padding: 16px 30px; }
@@ -79,8 +79,8 @@
 .card-title { font: 500 22px/1.3 var(--bw-font-index); color: var(--bw-ink-dark); }
 .card-title a { color: inherit; }
 .card-title a::after { content: ""; position: absolute; inset: 0; }
-.card__excerpt, .card__tagline { font: 400 15.5px/1.62 var(--bw-font); color: var(--bw-sub); flex: 1; }
-.card__role { font: 400 14.5px/1.4 var(--bw-font); color: var(--bw-gold-text); }
+.card__excerpt, .card__tagline { font: 400 17.5px/1.62 var(--bw-font); color: var(--bw-sub); flex: 1; }
+.card__role { font: 400 15.5px/1.4 var(--bw-font); color: var(--bw-gold-text); }
 .card .entry-meta { font-size: 12.5px; }
 .card .bw-link--plain { align-self: flex-start; position: relative; z-index: 1; margin-top: 6px; }
 
@@ -89,7 +89,7 @@
 .content-area--full { padding: 80px 0; }
 .widget { border-top: 1px solid var(--bw-ink-dark); padding-top: 22px; margin-bottom: 40px; }
 .widget-title { font: 500 15px/1 var(--bw-font-index); color: var(--bw-ink-dark); margin-bottom: 16px; }
-.widget ul { display: flex; flex-direction: column; gap: 10px; font: 400 15px/1.4 var(--bw-font); color: var(--bw-sub); }
+.widget ul { display: flex; flex-direction: column; gap: 10px; font: 400 16.5px/1.4 var(--bw-font); color: var(--bw-sub); }
 .widget a:hover { color: var(--bw-gold-text); }
 
 .pagination { margin-top: 56px; }
@@ -114,23 +114,17 @@
 .aside-box { border-top: 1px solid var(--bw-ink-dark); padding-top: 24px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
 .aside-box--sticky { position: sticky; top: calc(var(--bw-header-h) + 24px); }
 .aside-box__title { font: 500 20px/1.3 var(--bw-font-index); color: var(--bw-ink-dark); }
-.aside-box p { font: 400 15.5px/1.62 var(--bw-font); color: var(--bw-sub); }
+.aside-box p { font: 400 17.5px/1.62 var(--bw-font); color: var(--bw-sub); }
 .link-list { display: flex; flex-direction: column; }
-.link-list a { display: block; padding: 12px 0; border-bottom: 1px solid var(--bw-line-2); font: 500 15.5px/1.4 var(--bw-font); }
+.link-list a { display: block; padding: 12px 0; border-bottom: 1px solid var(--bw-line-2); font: 500 17px/1.4 var(--bw-font); }
 .link-list a:hover { color: var(--bw-gold-text); }
-.contact-list { display: flex; flex-direction: column; gap: 12px; font: 400 16px/1.5 var(--bw-font); color: var(--bw-sub); }
+.contact-list { display: flex; flex-direction: column; gap: 12px; font: 400 17.5px/1.5 var(--bw-font); color: var(--bw-sub); }
 .contact-list li { display: flex; align-items: center; gap: 12px; }
 .contact-list .icon { color: var(--bw-gold); width: 18px; height: 18px; }
 .contact-list a:hover { color: var(--bw-gold-text); }
 .contact-page__form { background: var(--bw-dark); color: var(--bw-paper); padding: 40px 36px; }
 .contact-page__form .contact-form-title { font: 500 24px/1.3 var(--bw-font-index); color: var(--bw-paper); margin-bottom: 24px; }
-.contact-form { display: flex; flex-direction: column; gap: 22px; }
-.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; }
-.contact-form__actions { display: flex; gap: 22px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
-.contact-form--light .bw-input { border-bottom-color: #c8bfae; color: var(--bw-ink); }
-.contact-form--light select.bw-input { color: var(--bw-sub); }
-.contact-form--light .bw-check { color: var(--bw-sub); }
-.contact-form--light .field-error { color: #9b3a32; }
+/* כללי הטופס עצמו (.contact-form) נמצאים ב-main.css – הטופס מוצג גם בדף הבית. */
 
 /* ---------- 404 / ללא תוצאות ---------- */
 .error-404 .container { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; padding-block: 40px; }
@@ -160,9 +154,8 @@
 	.container { padding: 0 22px; }
 	.section { padding: 56px 0; }
 	.content-with-sidebar, .content-area--full { padding: 56px 0; }
-	.contact-form__row { grid-template-columns: 1fr; }
 	.post-navigation { grid-template-columns: 1fr; }
 	.error-code { font-size: 80px; }
-	.entry-content { font-size: 16.5px; }
+	.entry-content { font-size: 18px; }
 	.entry-content .alignwide { margin-inline: 0; }
 }

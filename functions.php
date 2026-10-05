@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BECKWEALTH_VERSION', '1.1.1' );
+define( 'BECKWEALTH_VERSION', '1.2.0' );
 define( 'BECKWEALTH_DIR', get_template_directory() );
 define( 'BECKWEALTH_URI', get_template_directory_uri() );
 
@@ -38,6 +38,7 @@ $beckwealth_modules = array(
 	'template-tags',  // פונקציות עזר לתבניות.
 	'pages',          // עזרי העמודים הפנימיים: זיהוי תבניות, מקטעים משותפים.
 	'post-types',     // סוגי תוכן: שירותים, צוות, המלצות, שאלות.
+	'blog',           // מאמרים פנימיים וכתבות חיצוניות (קישור יוצא בכרטיס).
 	'customizer',     // הגדרות אתר בקסטומייזר.
 	'enqueue',        // טעינת CSS/JS מותנית.
 	'widgets',        // אזורי ווידג'טים.
@@ -52,6 +53,7 @@ $beckwealth_modules = array(
 	'compat',         // Elementor / WooCommerce / LiteSpeed.
 	'patterns',       // תבניות בלוקים לעורך.
 	'admin',          // דשבורד ייעודי והגדרות.
+	'content-admin',  // מסך "ניהול תוכן" ידידותי (טקסטים, תמונות, פרטי קשר).
 	'seed',           // תוכן התחלתי בהפעלה.
 );
 

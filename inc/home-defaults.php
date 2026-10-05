@@ -139,6 +139,8 @@ function beckwealth_home_fields(): array {
 		'blog_all_label'    => array( __( 'קישור לכל הכתבות – טקסט', 'beckwealth' ), 'text', __( 'לכל הכתבות ←', 'beckwealth' ), 'blog' ),
 		'news_title'        => array( __( 'ניוזלטר – כותרת', 'beckwealth' ), 'text', __( 'הרשמה לניוזלטר', 'beckwealth' ), 'blog' ),
 		'news_note'         => array( __( 'ניוזלטר – הערה', 'beckwealth' ), 'text', __( 'אחת לחודש, בלי ספאם. הסרה בכל רגע.', 'beckwealth' ), 'blog' ),
+		'news_thanks_title' => array( __( 'ניוזלטר – פופאפ "תודה" – כותרת', 'beckwealth' ), 'text', __( 'נרשמתם בהצלחה', 'beckwealth' ), 'blog' ),
+		'news_thanks_text'  => array( __( 'ניוזלטר – פופאפ "תודה" – טקסט', 'beckwealth' ), 'textarea', __( 'תודה שהצטרפתם. הניוזלטר של Beck Wealth יוצא אחת לחודש, עם תובנות על ניהול הון, מיסוי והעברה בין־דורית. אפשר להסיר את ההרשמה בכל רגע.', 'beckwealth' ), 'blog' ),
 
 		/* ---------- שאלות ---------- */
 		'faq_kicker'        => array( __( 'שורה עליונה', 'beckwealth' ), 'text', __( 'שאלות נפוצות', 'beckwealth' ), 'faq' ),
@@ -155,6 +157,10 @@ function beckwealth_home_fields(): array {
 		'contact_submit'    => array( __( 'כפתור שליחה – טקסט', 'beckwealth' ), 'text', __( 'שליחה', 'beckwealth' ), 'contact_section' ),
 		'contact_wa_label'  => array( __( 'כפתור וואטסאפ – טקסט', 'beckwealth' ), 'text', __( 'וואטסאפ · מענה מיידי', 'beckwealth' ), 'contact_section' ),
 		'contact_wa_msg'    => array( __( 'הודעת וואטסאפ מוכנה מראש', 'beckwealth' ), 'text', __( 'שלום, אשמח לתאם שיחת היכרות', 'beckwealth' ), 'contact_section' ),
+		'thanks_kicker'     => array( __( 'פופאפ "תודה" אחרי שליחה – שורה עליונה', 'beckwealth' ), 'text', __( 'הפנייה התקבלה', 'beckwealth' ), 'contact_section' ),
+		'thanks_title'      => array( __( 'פופאפ "תודה" – כותרת', 'beckwealth' ), 'text', __( 'תודה שיצרתם קשר', 'beckwealth' ), 'contact_section' ),
+		'thanks_text'       => array( __( 'פופאפ "תודה" – טקסט', 'beckwealth' ), 'textarea', __( 'פנייתכם הגיעה אלינו בהצלחה. אחד מאנשי הצוות שלנו יחזור אליכם בהקדם, בדרך כלל בתוך יום עסקים אחד, לתיאום שיחת היכרות חסויה.', 'beckwealth' ), 'contact_section' ),
+		'thanks_btn'        => array( __( 'פופאפ "תודה" – כפתור', 'beckwealth' ), 'text', __( 'חזרה לאתר', 'beckwealth' ), 'contact_section' ),
 
 		/* ---------- פוטר ---------- */
 		'footer_cities'     => array( __( 'שורת ערים', 'beckwealth' ), 'text', __( 'ציריך · תל אביב', 'beckwealth' ), 'footer' ),

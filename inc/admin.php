@@ -110,15 +110,16 @@ function beckwealth_render_dashboard(): void {
 		<div class="bw-columns">
 			<div class="bw-panel">
 				<h2><?php esc_html_e( 'עריכה מהירה של האתר', 'beckwealth' ); ?></h2>
+				<p class="bw-cta"><a class="button button-primary button-hero" href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content' ) ); ?>"><span class="dashicons dashicons-edit-large"></span> <?php esc_html_e( 'ניהול תוכן – כל הטקסטים, התמונות ופרטי הקשר', 'beckwealth' ); ?></a></p>
 				<ul class="bw-links">
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_home' ) ); ?>"><span class="dashicons dashicons-admin-home"></span> <?php esc_html_e( 'טקסטים ומקטעי דף הבית', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_contact' ) ); ?>"><span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'פרטי קשר (טלפון, וואטסאפ, כתובת)', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_social' ) ); ?>"><span class="dashicons dashicons-share"></span> <?php esc_html_e( 'רשתות חברתיות', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_design' ) ); ?>"><span class="dashicons dashicons-art"></span> <?php esc_html_e( 'צבעים וגופן', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_footer' ) ); ?>"><span class="dashicons dashicons-editor-alignleft"></span> <?php esc_html_e( 'פוטר והבהרה משפטית', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'title_tagline' ) ); ?>"><span class="dashicons dashicons-format-image"></span> <?php esc_html_e( 'לוגו ושם האתר', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content&tab=home' ) ); ?>"><span class="dashicons dashicons-admin-home"></span> <?php esc_html_e( 'דף הבית', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content&tab=general' ) ); ?>"><span class="dashicons dashicons-phone"></span> <?php esc_html_e( 'לוגו, פרטי קשר (טלפון, וואטסאפ, כתובת), רשתות ופוטר', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content&tab=about' ) ); ?>"><span class="dashicons dashicons-groups"></span> <?php esc_html_e( 'מי אנחנו', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content&tab=services' ) ); ?>"><span class="dashicons dashicons-portfolio"></span> <?php esc_html_e( 'עמודי המחלקות והיתרון השוויצרי', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-content&tab=contact' ) ); ?>"><span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( 'עמוד יצירת קשר', 'beckwealth' ); ?></a></li>
 					<li><a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>"><span class="dashicons dashicons-menu"></span> <?php esc_html_e( 'תפריטים', 'beckwealth' ); ?></a></li>
-					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-settings' ) ); ?>"><span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'הגדרות: Turnstile, פרטיות, נגישות', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( beckwealth_customizer_link( 'beckwealth_home' ) ); ?>"><span class="dashicons dashicons-visibility"></span> <?php esc_html_e( 'עריכה עם תצוגה מקדימה חיה (קסטומייזר)', 'beckwealth' ); ?></a></li>
+					<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=beckwealth-settings' ) ); ?>"><span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'הגדרות: Turnstile, נגישות', 'beckwealth' ); ?></a></li>
 				</ul>
 				<h2><?php esc_html_e( 'הוספת תוכן', 'beckwealth' ); ?></h2>
 				<p>
@@ -306,6 +307,7 @@ function beckwealth_admin_css(): void {
 	.bw-links{margin:0 0 20px}
 	.bw-links li{margin:0 0 8px}
 	.bw-links a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+	.bw-cta{margin:0 0 16px}.bw-cta .button-hero{display:inline-flex;align-items:center;gap:8px;background:#1e1a15;border-color:#1e1a15}.bw-cta .button-hero:hover{background:#96793a;border-color:#96793a}
 	</style>';
 }
 add_action( 'admin_head', 'beckwealth_admin_css' );

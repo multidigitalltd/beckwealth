@@ -44,7 +44,7 @@ $bw_meta = static function ( WP_Post $post ): array {
 		</div>
 		<div class="blog__grid">
 			<?php $bw_m = $bw_meta( $bw_main ); ?>
-			<a class="blog__main" href="<?php echo esc_url( get_permalink( $bw_main ) ); ?>" data-reveal>
+			<a class="blog__main" <?php echo beckwealth_post_link_attrs( $bw_main ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?> data-reveal>
 				<span class="office__photo-wrap">
 					<span class="bw-photo blog__main-photo" data-gs="1" data-zoom>
 						<?php
@@ -66,7 +66,7 @@ $bw_meta = static function ( WP_Post $post ): array {
 			<div class="blog__side" data-reveal>
 				<?php foreach ( $bw_list as $bw_n => $bw_post ) : ?>
 					<?php $bw_m = $bw_meta( $bw_post ); ?>
-					<a class="blog__item" href="<?php echo esc_url( get_permalink( $bw_post ) ); ?>">
+					<a class="blog__item" <?php echo beckwealth_post_link_attrs( $bw_post ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>>
 						<span class="bw-photo blog__item-photo" data-gs="1" data-zoom>
 							<?php
 							if ( has_post_thumbnail( $bw_post ) ) {
