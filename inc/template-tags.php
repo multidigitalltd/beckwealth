@@ -8,20 +8,34 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * תאריך בעברית ("12 בינואר 2026" / "ינואר 2026") – ללא תלות בשפת ההתקנה.
+ *
+ * @param int  $timestamp חותמת זמן (זמן האתר).
+ * @param bool $with_day  כולל יום בחודש.
+ * @return string
+ */
+function beckwealth_hebrew_date( int $timestamp, bool $with_day = true ): string {
+	static $months = array( 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר' );
+	$month = $months[ (int) wp_date( 'n', $timestamp ) - 1 ];
+	$year  = wp_date( 'Y', $timestamp );
+	return $with_day ? wp_date( 'j', $timestamp ) . ' ב' . $month . ' ' . $year : $month . ' ' . $year;
+}
+
+/**
  * תאריך פרסום ומחבר לפוסט.
  */
 function beckwealth_posted_on(): void {
 	$time = sprintf(
 		'<time class="entry-date published" datetime="%1$s">%2$s</time>',
 		esc_attr( get_the_date( DATE_W3C ) ),
-		esc_html( get_the_date() )
+		esc_html( beckwealth_hebrew_date( (int) get_the_time( 'U' ) ) )
 	);
 
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time .= sprintf(
 			'<time class="updated screen-reader-text" datetime="%1$s">%2$s</time>',
 			esc_attr( get_the_modified_date( DATE_W3C ) ),
-			esc_html( get_the_modified_date() )
+			esc_html( beckwealth_hebrew_date( (int) get_the_modified_time( 'U' ) ) )
 		);
 	}
 
@@ -32,6 +46,29 @@ function beckwealth_posted_on(): void {
 		echo '<span class="cat-links">' . wp_kses_post( $categories ) . '</span>';
 	}
 }
+
+/**
+ * כותרת ארכיון ללא הקידומת ("Category:", "קטגוריה:") – רק שם הקטגוריה/התגית/השנה.
+ *
+ * @param string $title כותרת.
+ * @return string
+ */
+function beckwealth_clean_archive_title( string $title ): string {
+	if ( is_category() || is_tag() || is_tax() ) {
+		return single_term_title( '', false );
+	}
+	if ( is_year() ) {
+		return get_the_date( 'Y' );
+	}
+	if ( is_month() ) {
+		return beckwealth_hebrew_date( (int) get_the_time( 'U' ), false );
+	}
+	if ( is_author() ) {
+		return get_the_author();
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'beckwealth_clean_archive_title' );
 
 /**
  * זמן קריאה משוער בדקות.

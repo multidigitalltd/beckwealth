@@ -87,13 +87,16 @@ function beckwealth_legacy_seed_services(): array {
  * (כלומר הלקוח לא ערך אותו). רץ פעם אחת לכל גרסת תוכן.
  */
 function beckwealth_upgrade_seeded_services(): void {
-	$rev = 4;
+	$rev = 5;
 	$cur = (int) get_option( 'beckwealth_content_rev', 0 );
 	if ( $cur >= $rev ) {
 		return;
 	}
 	if ( $cur < 4 ) {
 		beckwealth_upgrade_office_email(); // גרסה 4: אימייל המשרד office@beckwealth.co.il והכתובת בבני ברק.
+	}
+	if ( $cur < 5 ) {
+		beckwealth_upgrade_publications(); // גרסה 5: "פרסומים ומאמרים" – כתבות חיצוניות, בלי אנגלית.
 	}
 	if ( $cur >= 1 && $cur < 3 ) {
 		beckwealth_seed_design_pages(); // גרסה 3: עמודי "מי אנחנו" ו"היתרון השוויצרי".
@@ -148,6 +151,94 @@ function beckwealth_upgrade_office_email(): void {
 	if ( '' === $email || $email === (string) get_option( 'admin_email' ) || 'israel@beckwealth.ch' === $email ) {
 		set_theme_mod( 'beckwealth_email', BECKWEALTH_OFFICE_EMAIL );
 	}
+}
+
+/**
+ * הכתבות החיצוניות של הלקוח (מוצגות ככרטיסים ב"פרסומים ומאמרים"; הלחיצה מובילה לאתר המפרסם).
+ *
+ * @return array<int, array{0:string,1:string,2:string,3:string}> [כותרת, כתובת, תקציר, תאריך].
+ */
+function beckwealth_external_publications(): array {
+	return array(
+		array( 'חדד, רוט, שנהר ושות׳ (HAR) – פרסומים בתקשורת', 'https://www.har.law/media/', 'כתבות, ראיונות והופעות בתקשורת של משרד עורכי הדין חדד, רוט, שנהר ושות׳.', '2026-03-10 09:00:00' ),
+		array( 'עו״ד אילן בומבך ושות׳ – פרסומים במדיה', 'https://www.bombachlaw.com/media_publications/', 'פרסומים בתקשורת הארצית של משרד עו״ד אילן בומבך ושות׳: דיני חברות, משפט חוקתי וליטיגציה.', '2026-02-10 09:00:00' ),
+		array( 'ד״ר גאי כרמי – בתקשורת', 'https://carmi.law/media/', 'מאמרים, ראיונות ותכניות טלוויזיה בהשתתפות ד״ר גאי כרמי: ליטיגציה מסחרית, מכרזים, דיני חברות וחוקה.', '2026-01-12 09:00:00' ),
+	);
+}
+
+/**
+ * טעינת הכתבות החיצוניות (רק אלה שעדיין לא קיימות – לפי הכתובת).
+ *
+ * @return int מספר הכתבות שנוספו.
+ */
+function beckwealth_seed_external_posts(): int {
+	$term = term_exists( 'פרסומים בתקשורת', 'category' );
+	if ( ! $term ) {
+		$term = wp_insert_term( 'פרסומים בתקשורת', 'category', array( 'slug' => 'media' ) );
+	}
+	$cat_id = is_array( $term ) ? (int) $term['term_id'] : 0;
+	$added  = 0;
+	foreach ( beckwealth_external_publications() as [ $title, $url, $excerpt, $date ] ) {
+		$exists = get_posts(
+			array(
+				'post_type'      => 'post',
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+				'meta_key'       => '_bw_external_url', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- חד-פעמי בהפעלה/שדרוג.
+				'meta_value'     => $url, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+		if ( $exists ) {
+			continue;
+		}
+		$id = wp_insert_post(
+			array(
+				'post_type'     => 'post',
+				'post_status'   => 'publish',
+				'post_title'    => $title,
+				'post_excerpt'  => $excerpt,
+				'post_content'  => '<!-- wp:paragraph --><p>' . esc_html( $excerpt ) . '</p><!-- /wp:paragraph -->',
+				'post_date'     => $date,
+				'post_category' => $cat_id ? array( $cat_id ) : array(),
+				'meta_input'    => array( '_bw_external_url' => $url ),
+			)
+		);
+		if ( $id && ! is_wp_error( $id ) ) {
+			++$added;
+		}
+	}
+	return $added;
+}
+
+/**
+ * הקטגוריה "Uncategorized" (ברירת המחדל של וורדפרס) הופכת ל"כללי" – כדי שלא תוצג אנגלית בכרטיסים.
+ */
+function beckwealth_hebrew_default_category(): void {
+	$cat = get_term( (int) get_option( 'default_category' ), 'category' );
+	if ( $cat instanceof WP_Term && in_array( $cat->name, array( 'Uncategorized', 'כללי' ), true ) && 'כללי' !== $cat->name ) {
+		wp_update_term( $cat->term_id, 'category', array( 'name' => 'כללי', 'slug' => 'general' ) );
+	}
+}
+
+/**
+ * גרסה 5 באתרים קיימים: שם העמוד "פרסומים ומאמרים" (אם עדיין "בלוג"), קטגוריית ברירת מחדל בעברית,
+ * מאמרי הדוגמה שלא נערכו עוברים לטיוטה, והכתבות החיצוניות של הלקוח נטענות.
+ */
+function beckwealth_upgrade_publications(): void {
+	$blog_id = (int) get_option( 'page_for_posts' );
+	if ( $blog_id && 'בלוג' === get_the_title( $blog_id ) ) {
+		wp_update_post( array( 'ID' => $blog_id, 'post_title' => __( 'פרסומים ומאמרים', 'beckwealth' ) ) );
+	}
+	beckwealth_hebrew_default_category();
+	$samples = get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => 50, 'no_found_rows' => true ) );
+	foreach ( $samples as $sample ) {
+		if ( str_contains( (string) $sample->post_content, 'תוכן המאמר יתווסף על-ידי הלקוח' ) ) {
+			wp_update_post( array( 'ID' => $sample->ID, 'post_status' => 'draft' ) ); // מאמר לדוגמה שלא נערך – לטיוטה.
+		}
+	}
+	beckwealth_seed_external_posts();
 }
 
 /**
@@ -237,37 +328,13 @@ function beckwealth_seed_content(): void {
 		}
 	}
 
-	// מאמרים לדוגמה (רק אם הבלוג ריק לגמרי, כולל "שלום עולם").
+	// "פרסומים ומאמרים": "שלום עולם" נמחק, הקטגוריה "Uncategorized" הופכת ל"כללי", והכתבות החיצוניות של הלקוח נטענות.
 	$posts = get_posts( array( 'post_type' => 'post', 'post_status' => 'any', 'posts_per_page' => 2, 'fields' => 'ids', 'no_found_rows' => true ) );
-	$hello = 1 === count( $posts ) && 'hello-world' === get_post_field( 'post_name', $posts[0] );
-	if ( empty( $posts ) || $hello ) {
-		if ( $hello ) {
-			wp_delete_post( $posts[0], true );
-		}
-		$articles = array(
-			array( 'מס יציאה לישראלים: מה חשוב לדעת לפני רילוקיישן', 'מיסוי', '2026-01-12 09:00:00' ),
-			array( 'איך בנק שוויצרי שומר על הכסף שלכם בתקופות של אי־ודאות', 'בנקאות', '2025-12-08 09:00:00' ),
-			array( 'נאמנות משפחתית: מתי זה הכלי הנכון, ומתי לא', 'נאמנויות', '2025-11-10 09:00:00' ),
-		);
-		foreach ( $articles as [ $title, $cat, $date ] ) {
-			$term = term_exists( $cat, 'category' );
-			if ( ! $term ) {
-				$term = wp_insert_term( $cat, 'category' );
-			}
-			$cat_id  = is_array( $term ) ? (int) $term['term_id'] : 0;
-			$content = '<!-- wp:paragraph --><p>' . esc_html__( 'תוכן המאמר יתווסף על-ידי הלקוח. זהו מאמר לדוגמה שנוצר עם הפעלת התבנית.', 'beckwealth' ) . '</p><!-- /wp:paragraph -->';
-			$id      = wp_insert_post(
-				array(
-					'post_type'     => 'post',
-					'post_status'   => 'publish',
-					'post_title'    => $title,
-					'post_content'  => $content,
-					'post_date'     => $date,
-					'post_category' => $cat_id ? array( $cat_id ) : array(),
-				)
-			);
-		}
+	if ( 1 === count( $posts ) && 'hello-world' === get_post_field( 'post_name', $posts[0] ) ) {
+		wp_delete_post( $posts[0], true );
 	}
+	beckwealth_hebrew_default_category();
+	beckwealth_seed_external_posts();
 
 	// עמודים: דף הבית, בלוג, יצירת קשר + הגדרת עמוד הבית.
 	$front = get_page_by_path( 'home' );
@@ -278,7 +345,7 @@ function beckwealth_seed_content(): void {
 	}
 	$blog = get_page_by_path( 'blog' );
 	if ( ! $blog ) {
-		$blog_id = wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_title' => __( 'בלוג', 'beckwealth' ), 'post_name' => 'blog' ) );
+		$blog_id = wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_title' => __( 'פרסומים ומאמרים', 'beckwealth' ), 'post_name' => 'blog' ) );
 	} else {
 		$blog_id = $blog->ID;
 	}
@@ -299,6 +366,6 @@ function beckwealth_seed_content(): void {
 	}
 
 	update_option( 'beckwealth_seeded', BECKWEALTH_VERSION, false );
-	update_option( 'beckwealth_content_rev', 4, false );
+	update_option( 'beckwealth_content_rev', 5, false );
 }
 add_action( 'after_switch_theme', 'beckwealth_seed_content', 20 );

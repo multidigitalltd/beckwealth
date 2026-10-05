@@ -16,7 +16,7 @@ get_header();
 		<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 	</div>
 </div>
-<div class="container content-with-sidebar">
+<div class="container content-area--full">
 	<div class="content-area">
 		<?php if ( have_posts() ) : ?>
 			<div class="cards-grid">
@@ -32,7 +32,6 @@ get_header();
 			<?php get_template_part( 'template-parts/content/content', 'none' ); ?>
 		<?php endif; ?>
 	</div>
-	<?php get_sidebar(); ?>
 </div>
 <?php
 get_footer();

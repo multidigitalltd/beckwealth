@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BECKWEALTH_VERSION', '1.2.1' );
+define( 'BECKWEALTH_VERSION', '1.2.2' );
 define( 'BECKWEALTH_OFFICE_EMAIL', 'office@beckwealth.co.il' );
 define( 'BECKWEALTH_OFFICE_ADDRESS', 'מצדה 7, מגדל ב.ס.ר 4, בני ברק' ); // הכתובת בישראל – ברירת המחדל לפוטר, לעמוד יצירת קשר ולסכמה. // אימייל המשרד – ברירת המחדל לכל מקום שמוצג בו אימייל ליצירת קשר.
 define( 'BECKWEALTH_DIR', get_template_directory() );

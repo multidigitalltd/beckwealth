@@ -26,7 +26,7 @@ $bw_meta = static function ( WP_Post $post ): array {
 	$cats = get_the_category( $post->ID );
 	return array(
 		'cat'  => $cats ? $cats[0]->name : '',
-		'date' => get_the_date( 'F Y', $post ) . ' · ' . sprintf( /* translators: %d: minutes */ __( '%d דק׳ קריאה', 'beckwealth' ), beckwealth_reading_time( $post->ID ) ),
+		'date' => beckwealth_hebrew_date( (int) get_post_time( 'U', false, $post ) , false ) . ' · ' . sprintf( /* translators: %d: minutes */ __( '%d דק׳ קריאה', 'beckwealth' ), beckwealth_reading_time( $post->ID ) ),
 	);
 };
 ?>

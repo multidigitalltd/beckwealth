@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Beck Wealth 1.2.0\n"
+"Project-Id-Version: Beck Wealth 1.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/beckwealth\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-05T06:46:37+00:00\n"
+"POT-Creation-Date: 2026-10-05T07:39:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: beckwealth\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "וואטסאפ"
 msgstr ""
 
-#: functions.php:25
+#: functions.php:27
 msgid "תבנית Beck Wealth דורשת PHP 8.0 ומעלה. אנא שדרגו את גרסת ה-PHP בשרת."
 msgstr ""
 
@@ -357,8 +357,8 @@ msgstr ""
 #: inc/admin.php:115
 #: inc/content-admin.php:31
 #: inc/pages.php:161
-#: inc/seed.php:247
-#: inc/template-tags.php:406
+#: inc/seed.php:342
+#: inc/template-tags.php:443
 msgid "דף הבית"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgstr ""
 #: inc/content-admin.php:38
 #: inc/nav-fallback.php:22
 #: inc/nav-fallback.php:63
-#: inc/seed.php:131
+#: inc/seed.php:250
 msgid "מי אנחנו"
 msgstr ""
 
@@ -791,7 +791,7 @@ msgstr ""
 #: inc/nav-fallback.php:23
 #: inc/pages-defaults.php:112
 #: inc/pages-defaults.php:282
-#: inc/seed.php:132
+#: inc/seed.php:251
 msgid "היתרון השוויצרי"
 msgstr ""
 
@@ -815,7 +815,7 @@ msgstr ""
 #: inc/nav-fallback.php:67
 #: inc/pages-defaults.php:38
 #: inc/pages-defaults.php:242
-#: inc/seed.php:259
+#: inc/seed.php:354
 msgid "יצירת קשר"
 msgstr ""
 
@@ -3063,10 +3063,6 @@ msgstr ""
 msgid "תל אביב – כתובת"
 msgstr ""
 
-#: inc/pages-defaults.php:247
-msgid "מגדל אלון 2, תל אביב"
-msgstr ""
-
 #: inc/pages-defaults.php:248
 msgid "תל אביב – קישור למפה"
 msgstr ""
@@ -3219,8 +3215,8 @@ msgid "מחלקה – נאמנות"
 msgstr ""
 
 #: inc/pages.php:160
-#: inc/template-tags.php:397
-#: inc/template-tags.php:433
+#: inc/template-tags.php:434
+#: inc/template-tags.php:470
 msgid "פירורי לחם"
 msgstr ""
 
@@ -3416,14 +3412,10 @@ msgstr ""
 msgid "פרטי ההתחברות שגויים."
 msgstr ""
 
-#: inc/seed.php:230
-msgid "תוכן המאמר יתווסף על-ידי הלקוח. זהו מאמר לדוגמה שנוצר עם הפעלת התבנית."
-msgstr ""
-
-#: inc/seed.php:253
-#: inc/template-tags.php:430
+#: inc/seed.php:232
+#: inc/seed.php:348
 #: index.php:20
-msgid "בלוג"
+msgid "פרסומים ומאמרים"
 msgstr ""
 
 #: inc/settings.php:21
@@ -3454,30 +3446,30 @@ msgstr ""
 msgid "דלג לתוכן הראשי"
 msgstr ""
 
-#: inc/template-tags.php:381
+#: inc/template-tags.php:418
 #: page-templates/about.php:90
 msgid "הקודם"
 msgstr ""
 
-#: inc/template-tags.php:382
+#: inc/template-tags.php:419
 #: page-templates/about.php:91
 msgid "הבא"
 msgstr ""
 
-#: inc/template-tags.php:383
+#: inc/template-tags.php:420
 msgid "ניווט בין עמודים"
 msgstr ""
 
-#: inc/template-tags.php:426
+#: inc/template-tags.php:463
 msgid "תוצאות חיפוש"
 msgstr ""
 
-#: inc/template-tags.php:428
+#: inc/template-tags.php:465
 msgid "העמוד לא נמצא"
 msgstr ""
 
-#: inc/widgets.php:15
-msgid "סרגל צד – בלוג"
+#: inc/template-tags.php:467
+msgid "בלוג"
 msgstr ""
 
 #: page-templates/about.php:60
