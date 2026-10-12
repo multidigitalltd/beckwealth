@@ -1,0 +1,106 @@
+/**
+ * Beck Wealth – מסך "ניהול תוכן" בלוח הבקרה.
+ */
+.bw-content { max-width: 1180px; --bwc-ink: #1e1a15; --bwc-gold: #96793a; --bwc-line: #dcd5c8; --bwc-bg: #fbf9f4; }
+.bw-content h1 { font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+.bw-content__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin: 10px 0 18px; }
+.bw-content__lead { margin: 0; color: #50575e; font-size: 14px; }
+.bw-content__search { position: relative; display: block; flex: 0 1 360px; }
+.bw-content__search .dashicons { position: absolute; inset-inline-start: 10px; top: 50%; transform: translateY(-50%); color: #8c8f94; }
+.bw-content__search input { width: 100%; padding: 8px 36px 8px 12px; border-radius: 8px; border: 1px solid #c3c4c7; min-height: 40px; font-size: 14px; }
+.bw-content__notice { margin: 0 0 16px; }
+
+.bw-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; border-bottom: 1px solid var(--bwc-line); padding-bottom: 12px; }
+.bw-tab { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px; background: #fff; border: 1px solid var(--bwc-line); color: #2c3338; text-decoration: none; font-size: 14px; font-weight: 500; transition: border-color .15s, background .15s, color .15s; }
+.bw-tab:hover, .bw-tab:focus { border-color: var(--bwc-gold); color: var(--bwc-ink); box-shadow: none; }
+.bw-tab.is-active { background: var(--bwc-ink); border-color: var(--bwc-ink); color: #fff; }
+.bw-tab .dashicons { font-size: 18px; width: 18px; height: 18px; }
+
+.bw-content__intro { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 16px; }
+.bw-content__intro p { margin: 0; color: #50575e; }
+.bw-content__intro .button .dashicons { vertical-align: text-bottom; }
+
+.bw-section { background: #fff; border: 1px solid var(--bwc-line); border-radius: 12px; margin: 0 0 16px; overflow: hidden; }
+.bw-section__head { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--bwc-bg); border-bottom: 1px solid transparent; user-select: none; }
+.bw-section__head::-webkit-details-marker { display: none; }
+.bw-section[open] > .bw-section__head { border-bottom-color: var(--bwc-line); }
+.bw-section__title { font-size: 16px; font-weight: 600; color: var(--bwc-ink); flex: 1; }
+.bw-section__count { font-size: 12px; color: #646970; background: #fff; border: 1px solid var(--bwc-line); border-radius: 999px; padding: 2px 10px; }
+.bw-section__chev { color: #8c8f94; transition: transform .2s; }
+.bw-section[open] .bw-section__chev { transform: rotate(180deg); }
+.bw-section__help { margin: 0; padding: 12px 20px 0; color: #50575e; font-size: 13px; }
+
+.bw-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px 24px; padding: 20px; }
+.bw-f { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bw-f--wide { grid-column: 1 / -1; }
+.bw-f__label { font-weight: 600; color: var(--bwc-ink); font-size: 14px; }
+.bw-f__help { font-size: 12.5px; color: #646970; margin-top: -2px; }
+.bw-input { width: 100%; max-width: none; min-height: 40px; border-radius: 8px; border: 1px solid #c3c4c7; padding: 6px 12px; font-size: 14px; box-shadow: none; }
+.bw-input:focus { border-color: var(--bwc-gold); box-shadow: 0 0 0 1px var(--bwc-gold); outline: none; }
+.bw-textarea { line-height: 1.6; resize: vertical; padding: 10px 12px; }
+.bw-f.is-changed .bw-f__label::after { content: " •"; color: var(--bwc-gold); }
+
+/* מתג */
+.bw-switch { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; padding: 6px 0; }
+.bw-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.bw-switch__track { width: 46px; height: 26px; border-radius: 999px; background: #c3c4c7; position: relative; transition: background .2s; flex: none; }
+.bw-switch__track::after { content: ""; position: absolute; top: 3px; inset-inline-start: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .2s; }
+.bw-switch input:checked + .bw-switch__track { background: var(--bwc-gold); }
+.bw-switch input:checked + .bw-switch__track::after { transform: translateX(-20px); }
+[dir="ltr"] .bw-switch input:checked + .bw-switch__track::after { transform: translateX(20px); }
+.bw-switch input:focus-visible + .bw-switch__track { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--bwc-gold); }
+.bw-switch__label { font-weight: 600; color: var(--bwc-ink); font-size: 14px; }
+
+/* תמונה */
+.bw-image { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; border: 1px dashed #c3c4c7; border-radius: 10px; padding: 14px; background: var(--bwc-bg); }
+.bw-image.has-image { border-style: solid; }
+.bw-image__preview { width: 180px; min-height: 60px; display: flex; align-items: center; justify-content: center; background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; border-radius: 6px; overflow: hidden; }
+.bw-image__preview:empty { background: #f0eee8; }
+.bw-image__preview img { max-width: 100%; height: auto; max-height: 140px; display: block; object-fit: contain; }
+.bw-image__actions { display: flex; align-items: center; gap: 12px; }
+.bw-image__choose .dashicons { vertical-align: text-bottom; }
+.bw-image__remove { color: #b32d2e; }
+
+/* רשימות (repeater) */
+.bw-list { border: 1px solid var(--bwc-line); border-radius: 10px; overflow: hidden; }
+.bw-list__table { width: 100%; border-collapse: collapse; }
+.bw-list__table th { text-align: start; font-size: 12.5px; color: #50575e; font-weight: 600; background: var(--bwc-bg); padding: 10px 10px; border-bottom: 1px solid var(--bwc-line); }
+.bw-list__table td { padding: 6px 6px; border-bottom: 1px solid #efece5; vertical-align: top; }
+.bw-list__table tr:last-child td { border-bottom: 0; }
+.bw-list__n { width: 36px; text-align: center; color: #8c8f94; font-size: 12px; padding-top: 14px !important; }
+.bw-list__tools { width: 100px; white-space: nowrap; }
+.bw-cell { width: 100%; border: 1px solid transparent; background: #fff; border-radius: 6px; padding: 7px 10px; font-size: 14px; line-height: 1.5; min-height: 36px; resize: none; overflow: hidden; box-shadow: none; }
+.bw-cell:hover { border-color: #dcdcde; }
+.bw-cell:focus { border-color: var(--bwc-gold); box-shadow: 0 0 0 1px var(--bwc-gold); outline: none; }
+.bw-list__btn { background: none; border: 0; padding: 6px; cursor: pointer; color: #8c8f94; border-radius: 6px; }
+.bw-list__btn:hover { background: #f0eee8; color: var(--bwc-ink); }
+.bw-list__btn--del:hover { color: #b32d2e; }
+.bw-list__btn .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.bw-list__add { margin: 10px !important; }
+.bw-list__add .dashicons { vertical-align: text-bottom; }
+.bw-list--empty .bw-list__table thead { display: none; }
+
+/* שורת שמירה דביקה */
+.bw-savebar { position: sticky; bottom: 0; z-index: 10; display: flex; align-items: center; justify-content: flex-end; gap: 18px; padding: 14px 20px; margin: 8px -20px 0 0; background: rgba(255, 255, 255, .96); backdrop-filter: blur(6px); border-top: 1px solid var(--bwc-line); box-shadow: 0 -8px 24px rgba(0, 0, 0, .06); }
+.bw-savebar .button-primary { background: var(--bwc-ink); border-color: var(--bwc-ink); min-height: 42px; padding: 0 28px; font-size: 15px; font-weight: 600; }
+.bw-savebar .button-primary:hover, .bw-savebar .button-primary:focus { background: var(--bwc-gold); border-color: var(--bwc-gold); }
+.bw-savebar__status { color: #996800; font-weight: 500; }
+.bw-content__nomatch { padding: 24px; text-align: center; color: #50575e; background: #fff; border: 1px dashed var(--bwc-line); border-radius: 12px; }
+.bw-f.is-hidden, .bw-section.is-hidden { display: none; }
+
+/* לשונית "ועוד" */
+.bw-more { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.bw-more__card { background: #fff; border: 1px solid var(--bwc-line); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.bw-more__card h2 { margin: 0; font-size: 16px; }
+.bw-more__card p { margin: 0; color: #50575e; }
+.bw-more__icon { font-size: 28px; width: 28px; height: 28px; color: var(--bwc-gold); }
+.bw-more__actions { margin-top: auto !important; padding-top: 8px; display: flex; gap: 8px; }
+.bw-more .button-primary { background: var(--bwc-ink); border-color: var(--bwc-ink); }
+
+@media (max-width: 782px) {
+	.bw-fields { grid-template-columns: 1fr; padding: 16px; }
+	.bw-content__head { align-items: stretch; }
+	.bw-content__search { flex-basis: 100%; }
+	.bw-list__tools { width: 84px; }
+	.bw-savebar { margin-right: -10px; margin-left: -10px; padding: 12px 14px; }
+}
